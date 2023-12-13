@@ -1,0 +1,4 @@
+node_modules
+/dist
+.dumi
+.DS_Store
