@@ -1,20 +1,5 @@
 # blogs
 
-A static site base on [dumi](https://d.umijs.org).
+使用dumi2搭建静态站点
 
-## Development
-
-```bash
-# install dependencies
-$ pnpm install
-
-# start dev server
-$ pnpm start
-
-# build docs
-$ pnpm run build
-```
-
-## LICENSE
-
-MIT
+markdown输出文章
