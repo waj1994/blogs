@@ -5,7 +5,7 @@ module.exports = {
     '@assets': path.resolve(__dirname, '../assets'),
   },
   title: '小王',
-  description: 'web开发，前端开发，javascript，react',
+  description: 'web开发,前端开发,javascript,react',
   head: [
     ['meta', { name: 'keyword', content: '前端, javascript, vue, react, git' }],
   ],
