@@ -1,5 +1,5 @@
 # blogs
 
-使用vuepress搭建静态站点
+使用 vuepress 搭建静态站点
 
-markdown输出文章
+使用 markdown 语法输出文章
