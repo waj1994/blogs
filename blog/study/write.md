@@ -1,9 +1,10 @@
 ---
-title: 手写题
-description: 前端面试中常见的手写题
-keywords: ['面试', 'js', '手写', '前端']
-toc: content
-order: 1
+title: 面试常见手写题
+date: 2023-11-24
+tags:
+  - js
+  - 面试
+summary: 面试中经常遇到的手写题总结，包括防抖节流、改变this指向、柯里化、扁平化等等。
 ---
 
 ### call、apply
@@ -22,12 +23,12 @@ order: 1
 // apply 参数就为content，arg = []
 Function.prototype.myCall = function (content, ...arg) {
   // content不存在就默认指向全局。
-  content = content || globalThis;
-  content.fn = this;
-  const res = content.fn(...arg);
-  delete content.fn;
-  return res;
-};
+  content = content || globalThis
+  content.fn = this
+  const res = content.fn(...arg)
+  delete content.fn
+  return res
+}
 ```
 
 ### bind
@@ -48,33 +49,30 @@ Function.prototype.bind = function (context, ...arg) {
    * globalThis 全局对象 自动区分环境
    * 即node中的global，浏览器中的window，WebWorker中的self
    */
-  context = context || globalThis;
-  const fn = this;
+  context = context || globalThis
+  const fn = this
   function Fn(...arguments) {
-    return fn.apply(this instanceof Fn ? this : context, [
-      ...arg,
-      ...arguments,
-    ]);
+    return fn.apply(this instanceof Fn ? this : context, [...arg, ...arguments])
   }
-  Fn.prototype = Object.create(this.prototype);
-  return Fn;
-};
+  Fn.prototype = Object.create(this.prototype)
+  return Fn
+}
 
 const obj = {
-  name: 'sam',
-};
+  name: 'sam'
+}
 
 function f1(sex, age) {
-  this.say = '说话';
-  console.log(this);
-  console.log(this.name, sex, age);
+  this.say = '说话'
+  console.log(this)
+  console.log(this.name, sex, age)
 }
-f1.prototype.type = '动物';
+f1.prototype.type = '动物'
 
-const f = f1.bind(obj, '男');
-f(28);
-const o = new f(28);
-console.log(o.type);
+const f = f1.bind(obj, '男')
+f(28)
+const o = new f(28)
+console.log(o.type)
 ```
 
 ### 深拷贝
@@ -94,63 +92,65 @@ console.log(o.type);
 function deepClone(target, map = new WeakMap()) {
   // null == undefined，ull和undefined直接返回
   if (target == null) {
-    return target;
+    return target
   }
   // 正则
   if (target instanceof RegExp) {
-    return new RegExp(target);
+    return new RegExp(target)
   }
   // 对象
   if (target instanceof Date) {
-    return new Date(target);
+    return new Date(target)
   }
   // 函数直接返回
   if (typeof target === 'function') {
-    return target;
+    return target
   }
   // 如果不是对象直接返回
   if (typeof target !== 'object') {
-    return target;
+    return target
   }
 
   // [] || {}
-  const obj = new target.constructor();
+  const obj = new target.constructor()
 
   // 解决循环引用
   if (map.has(target)) {
-    return map.get(target);
+    return map.get(target)
   }
-  map.set(target, obj);
+  map.set(target, obj)
 
   for (let key in target) {
     // 如果是实例本身的属性
     if (target.hasOwnProperty(key)) {
-      obj[key] = deepClone(target[key], map);
+      obj[key] = deepClone(target[key], map)
     }
   }
-  return obj;
+  return obj
 }
 ```
 
 ### 柯里化
 
-柯里化：接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数，参数传递完成后函数执行。
+柯里化：接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，
+并且返回接受余下的参数而且返回结果的新函数，参数传递完成后函数执行。
 
-思路：判断当前参数是否等于原函数参数，如果相等就执行原函数，如果不相等就返回一个新函数，新函数内部执行递归柯里化函数。
+思路：判断当前参数是否等于原函数参数，如果相等就执行原函数，如果不相等就返回一个
+新函数，新函数内部执行递归柯里化函数。
 
 代码：
 
 ```javascript
 function currying(callback, ...arg) {
   if (typeof callback !== 'function') {
-    throw 'callback is not a function';
+    throw 'callback is not a function'
   }
   // callbacl.length 可以获取到函数的参数个数
   return callback.length === arg.length
     ? callback(...arg)
     : function (...newArg) {
-        return currying(callback, ...arg, ...newArg);
-      };
+        return currying(callback, ...arg, ...newArg)
+      }
 }
 ```
 
@@ -158,19 +158,20 @@ function currying(callback, ...arg) {
 
 防抖：在某一高频触发事件时，直到某个时间段不触发才执行事件。
 
-思路：利用闭包和定时器，在外层函数记录定时器 timer，内层函数首先清除定时器 timer，再设置定时器在一定时间内不触发事件则定时器执行。
+思路：利用闭包和定时器，在外层函数记录定时器 timer，内层函数首先清除定时器
+timer，再设置定时器在一定时间内不触发事件则定时器执行。
 
 代码：
 
 ```javascript
 function debounce(fn, wait) {
-  let timer = null;
+  let timer = null
   return function () {
-    clearTimeout(timer);
+    clearTimeout(timer)
     timer = window.setTimeout(() => {
-      fn.call(this, ...arguments);
-    }, wait);
-  };
+      fn.call(this, ...arguments)
+    }, wait)
+  }
 }
 ```
 
@@ -180,27 +181,29 @@ function debounce(fn, wait) {
 
 #### 方法一：定时器
 
-思路：利用闭包和定时器，在外层函数记录定时器 timer，内层函数判断是否定时器 timer 的值是否存在，不存在设置定时器设置延后执行并清楚定时器。
+思路：利用闭包和定时器，在外层函数记录定时器 timer，内层函数判断是否定时器 timer
+的值是否存在，不存在设置定时器设置延后执行并清楚定时器。
 
 代码：
 
 ```typescript
 function thorttle(fn, wait) {
-  let timer = null;
+  let timer = null
   return function () {
     if (!timer) {
       timer = setTimeout(() => {
-        fn.call(this, ...arguments);
-        timer = null;
-      }, wait);
+        fn.call(this, ...arguments)
+        timer = null
+      }, wait)
     }
-  };
+  }
 }
 ```
 
 #### 方法二：时间戳
 
-思路：利用时间差和闭包，外层函数记录上一次执行的时间，内存函数判断当前时间减去上一次的时间是否大于定义的时间，如果大于就执行函数并重新记录上一次的时间。
+思路：利用时间差和闭包，外层函数记录上一次执行的时间，内存函数判断当前时间减去上
+一次的时间是否大于定义的时间，如果大于就执行函数并重新记录上一次的时间。
 
 代码：
 
@@ -223,33 +226,35 @@ function thorttle(fn, wait) {
 
 #### 第一种方法--flat
 
-flat 方法参数为可选，表示需要递归的层级，即需要打散的数组层级，默认为 1，在不确定需要递归的层级时传入 Infinity 可递归全部。
+flat 方法参数为可选，表示需要递归的层级，即需要打散的数组层级，默认为 1，在不确
+定需要递归的层级时传入 Infinity 可递归全部。
 
 ```javascript
-[1, [2, [3]]].flat(Infinity); // [1, 2, 3]
+;[1, [2, [3]]].flat(Infinity) // [1, 2, 3]
 ```
 
 #### 第二种方法--转为字符串
 
-利用数组 api(toString、join)将多维数组转为字符串。再讲字符串转为一维数组。
-注意使用场景，使用该方案如果是数值需要转换。
+利用数组 api(toString、join)将多维数组转为字符串。再讲字符串转为一维数组。注意使
+用场景，使用该方案如果是数值需要转换。
 
 ```javascript
-[1, [2, [3]]]
+;[1, [2, [3]]]
   .toString()
   .split(',')
-  .map((item) => Number(item)); // [1, 2, 3]
+  .map(item => Number(item)) // [1, 2, 3]
 ```
 
 #### 第三种方法--遍历递归
 
-遍历数组判断数组每一个元素是否是数组，如果是数组递归执行，如果不是数组放入返回结果中。常见的是使用 reduce 遍历。
+遍历数组判断数组每一个元素是否是数组，如果是数组递归执行，如果不是数组放入返回结
+果中。常见的是使用 reduce 遍历。
 
 ```javascript
 function flat(arr) {
   return arr.reduce((prev, next) => {
-    return prev.concat(Array.isArray(next) ? flat(next) : next);
-  }, []);
+    return prev.concat(Array.isArray(next) ? flat(next) : next)
+  }, [])
 }
 ```
 
@@ -264,14 +269,14 @@ instanceof：用于检测构造函数的 prototype 属性是否出现在某个�
 ```javascript
 function myInstanceof(instance, parent) {
   // Object.getPrototypeOf获取的是instance的__proto__，ie没有__proto__！！！
-  let obj = Object.getPrototypeOf(instance);
+  let obj = Object.getPrototypeOf(instance)
   while (obj) {
     if (obj === parent.prototype) {
-      return true;
+      return true
     }
-    obj = Object.getPrototypeOf(obj);
+    obj = Object.getPrototypeOf(obj)
   }
-  return false;
+  return false
 }
 ```
 
@@ -288,12 +293,12 @@ function myInstanceof(instance, parent) {
 
 ```javascript
 function myNew(parent, ...arg) {
-  const obj = Object.create(parent.prototype);
-  const res = parent.call(obj, ...arg);
+  const obj = Object.create(parent.prototype)
+  const res = parent.call(obj, ...arg)
   if (res !== null && ['object', 'function'].includes(typeof res)) {
-    return res;
+    return res
   }
-  return obj;
+  return obj
 }
 ```
 
@@ -305,7 +310,8 @@ function myNew(parent, ...arg) {
 
 思路：
 
-- object 转换时会有依次调用方法 Symbol.toPrimitive，valueOf，toString。如果返回的是基本类型就停止调用。
+- object 转换时会有依次调用方法 Symbol.toPrimitive，valueOf，toString。如果返回
+  的是基本类型就停止调用。
 
 代码：
 
@@ -324,18 +330,18 @@ const a = {
 
   // toString
   toString() {
-    return this.i++;
-  },
-};
+    return this.i++
+  }
+}
 
-console.log(a == 1 && a == 2 && a == 3);
+console.log(a == 1 && a == 2 && a == 3)
 ```
 
 - array 转换和 object 类同，不过 toString 会调用数组的 join 方法。  
   代码：
 
 ```javascript
-const a = [1];
+const a = [1]
 
 // Symbol.toPrimitive
 /* a[Symbol.toPrimitive] = function () {
@@ -354,10 +360,10 @@ const a = [1];
 
 // join array本身的toString方法会调array的join方法
 a.join = function () {
-  return this[0]++;
-};
+  return this[0]++
+}
 
-console.log(a == 1 && a == 2 && a == 3);
+console.log(a == 1 && a == 2 && a == 3)
 ```
 
 ###### 劫持代理
@@ -378,12 +384,12 @@ const a = new Proxy(
   { _a: 1 },
   {
     get(a) {
-      return () => a._a++;
-    },
-  },
-);
+      return () => a._a++
+    }
+  }
+)
 
-console.log(a == 1 && a == 2 && a == 3);
+console.log(a == 1 && a == 2 && a == 3)
 ```
 
 ###### with
@@ -393,12 +399,12 @@ console.log(a == 1 && a == 2 && a == 3);
 代码：
 
 ```javascript
-let _a = 1;
+let _a = 1
 with ({
   get a() {
-    return _a++;
-  },
+    return _a++
+  }
 }) {
-  console.log(a == 1 && a == 2 && a == 3);
+  console.log(a == 1 && a == 2 && a == 3)
 }
 ```

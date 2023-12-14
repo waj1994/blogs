@@ -3,10 +3,10 @@
   "version": "0.0.1",
   "description": "个人博客",
   "scripts": {
-    "start": "npm run dev",
-    "dev": "dumi dev",
-    "build": "dumi build",
-    "prepare": "husky install && dumi setup"
+    "build": "set NODE_OPTIONS=--openssl-legacy-provider && vuepress build blog",
+    "dev": "vuepress dev blog",
+    "format": "prettier --cache --write .",
+    "prepare": "husky install"
   },
   "authors": [],
   "license": "MIT",
@@ -23,9 +23,10 @@
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
-    "dumi": "^2.2.13",
+    "@vuepress/theme-blog": "^2.3.3",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "vuepress": "^1.9.10"
   }
 }

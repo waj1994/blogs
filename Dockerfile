@@ -2,7 +2,7 @@ FROM nginx:latest
 
 RUN mkdir -p /home/app
 WORKDIR /home/app
-COPY ./dist /home/app
+COPY ./blog/.vuepress/dist /home/app
 
 COPY nginx.conf /etc/nginx/nginx.conf
 
