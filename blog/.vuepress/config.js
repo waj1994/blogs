@@ -8,6 +8,7 @@ module.exports = {
   description: 'web开发,前端开发,javascript,react',
   head: [
     ['meta', { name: 'keyword', content: '前端, javascript, vue, react, git' }],
+    ['link', { rel: 'icon', href: '/favicon.ico' }],
   ],
   theme: '@vuepress/blog',
   themeConfig: {
