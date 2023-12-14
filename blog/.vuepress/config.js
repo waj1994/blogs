@@ -27,7 +27,7 @@ module.exports = {
       {
         id: 'pit',
         dirname: 'pit',
-        title: '苦作舟,全是坑',
+        title: '苦作舟',
         path: '/pit/',
         itemPermalink: '/pit/:slug',
       },
