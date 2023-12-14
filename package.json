@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "个人博客",
   "scripts": {
-    "build": "set NODE_OPTIONS=--openssl-legacy-provider && vuepress build blog",
+    "build": "vuepress build blog",
     "dev": "vuepress dev blog",
     "format": "prettier --cache --write .",
     "prepare": "husky install"
