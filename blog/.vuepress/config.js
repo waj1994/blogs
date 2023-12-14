@@ -34,9 +34,10 @@ module.exports = {
     ],
 
     footer: {
+      // 备案信息
       copyright: [
         {
-          text: 'xw © 2023',
+          text: '',
           link: '',
         },
       ],
