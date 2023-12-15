@@ -50,4 +50,7 @@ module.exports = {
       hostname: 'https://jsxwtx.cn',
     },
   },
+  markdown: {
+    externalLinks: { target: '_blank', rel: 'nofollow noopener noreferrer' },
+  },
 };
