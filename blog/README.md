@@ -1,6 +1,8 @@
 ---
-title: About
+title: 关于我
+date: 2023-12-14
 layout: About
+summary: 小王同学的个人介绍，个人博客的由来。
 ---
 
 <h3>hi, 我是小王同学</h3>
