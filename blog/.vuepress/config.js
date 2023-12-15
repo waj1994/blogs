@@ -55,7 +55,6 @@ module.exports = {
         itemPermalink: '/pit/:slug',
       },
     ],
-
     footer: {
       // 备案信息
       copyright: [
