@@ -30,6 +30,7 @@ module.exports = {
   ],
   theme: '@vuepress/blog',
   themeConfig: {
+    dateFormat: 'YYYY-MM-DD',
     smoothScroll: true,
     nav: [
       { text: '学海无涯', link: '/study/' },
