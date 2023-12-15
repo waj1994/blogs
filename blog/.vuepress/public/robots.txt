@@ -1,0 +1,3 @@
+Sitemap: https://www.jsxwtx.cn//sitemap.xml
+
+User-agent: *
