@@ -14,6 +14,19 @@ module.exports = {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
     ],
     ['link', { rel: 'icon', href: '/favicon.ico' }],
+    [
+      'script',
+      {},
+      `
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?e038ce4bbd9a46f547637490e22e2cd6";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+      `,
+    ],
   ],
   theme: '@vuepress/blog',
   themeConfig: {
