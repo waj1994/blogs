@@ -11,7 +11,10 @@ module.exports = {
     ['meta', { name: 'baidu-site-verification', content: 'codeva-bbNA5LdLps' }],
     [
       'meta',
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      {
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1, user-scalable=0',
+      },
     ],
     ['link', { rel: 'icon', href: '/favicon.ico' }],
     [
