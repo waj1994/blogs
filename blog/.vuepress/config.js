@@ -44,4 +44,9 @@ module.exports = {
       ],
     },
   },
+  plugins: {
+    sitemap: {
+      hostname: 'https://jsxwtx.cn',
+    },
+  },
 };
