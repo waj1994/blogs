@@ -17,6 +17,7 @@ module.exports = {
       },
     ],
     ['link', { rel: 'icon', href: '/favicon.ico' }],
+    ['link', { rel: 'dns-prefetch', href: 'https://www.jsxwtx.cn' }],
     [
       'script',
       {},
