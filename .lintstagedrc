@@ -1,3 +1,3 @@
 {
-  "*.{md,json,vue,js,styl}": ["prettier --cache --write"]
+  "*.{md,json,vue,js}": ["prettier --cache --write"]
 }
