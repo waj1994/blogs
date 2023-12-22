@@ -8,7 +8,13 @@ module.exports = {
   description: 'web开发,前端开发,javascript,react',
   head: [
     ['meta', { name: 'keyword', content: '前端, javascript, vue, react, git' }],
+    // 百度收录校验
     ['meta', { name: 'baidu-site-verification', content: 'codeva-7PJLS0WuUI' }],
+    // 必应收录校验
+    [
+      'meta',
+      { name: 'msvalidate.01', content: '37DF9FCEF8FB058D63E35D0264ED92D8' },
+    ],
     [
       'meta',
       {
