@@ -60,8 +60,8 @@ module.exports = {
       // 备案信息
       copyright: [
         {
-          text: '',
-          link: '',
+          text: '渝ICP备2023017543号',
+          link: 'https://beian.miit.gov.cn',
         },
       ],
     },
