@@ -8,7 +8,7 @@ module.exports = {
   description: 'web开发,前端开发,javascript,react',
   head: [
     ['meta', { name: 'keyword', content: '前端, javascript, vue, react, git' }],
-    ['meta', { name: 'baidu-site-verification', content: 'codeva-bbNA5LdLps' }],
+    ['meta', { name: 'baidu-site-verification', content: 'codeva-7PJLS0WuUI' }],
     [
       'meta',
       {
