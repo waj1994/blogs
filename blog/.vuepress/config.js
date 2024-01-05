@@ -69,6 +69,10 @@ module.exports = {
           text: '渝ICP备2023017543号',
           link: 'https://beian.miit.gov.cn',
         },
+        {
+          text: '渝公网安备50010402001494号',
+          link: 'https://beian.mps.gov.cn/#/query/webSearch?code=50010402001494',
+        },
       ],
     },
   },
