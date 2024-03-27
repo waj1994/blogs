@@ -1,6 +1,6 @@
 <template>
   <div class="start">
-    <router-link to="/study/">开始</router-link>
+    <router-link to="/article/">开始</router-link>
   </div>
 </template>
 
