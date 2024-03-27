@@ -23,12 +23,12 @@ summary: 面试中经常遇到的手写题总结，包括防抖节流、改变th
 // apply 参数就为content，arg = []
 Function.prototype.myCall = function (content, ...arg) {
   // content不存在就默认指向全局。
-  content = content || globalThis
-  content.fn = this
-  const res = content.fn(...arg)
-  delete content.fn
-  return res
-}
+  content = content || globalThis;
+  content.fn = this;
+  const res = content.fn(...arg);
+  delete content.fn;
+  return res;
+};
 ```
 
 ### bind
@@ -49,30 +49,33 @@ Function.prototype.bind = function (context, ...arg) {
    * globalThis 全局对象 自动区分环境
    * 即node中的global，浏览器中的window，WebWorker中的self
    */
-  context = context || globalThis
-  const fn = this
+  context = context || globalThis;
+  const fn = this;
   function Fn(...arguments) {
-    return fn.apply(this instanceof Fn ? this : context, [...arg, ...arguments])
+    return fn.apply(this instanceof Fn ? this : context, [
+      ...arg,
+      ...arguments,
+    ]);
   }
-  Fn.prototype = Object.create(this.prototype)
-  return Fn
-}
+  Fn.prototype = Object.create(this.prototype);
+  return Fn;
+};
 
 const obj = {
-  name: 'sam'
-}
+  name: 'sam',
+};
 
 function f1(sex, age) {
-  this.say = '说话'
-  console.log(this)
-  console.log(this.name, sex, age)
+  this.say = '说话';
+  console.log(this);
+  console.log(this.name, sex, age);
 }
-f1.prototype.type = '动物'
+f1.prototype.type = '动物';
 
-const f = f1.bind(obj, '男')
-f(28)
-const o = new f(28)
-console.log(o.type)
+const f = f1.bind(obj, '男');
+f(28);
+const o = new f(28);
+console.log(o.type);
 ```
 
 ### 深拷贝
@@ -92,41 +95,41 @@ console.log(o.type)
 function deepClone(target, map = new WeakMap()) {
   // null == undefined，ull和undefined直接返回
   if (target == null) {
-    return target
+    return target;
   }
   // 正则
   if (target instanceof RegExp) {
-    return new RegExp(target)
+    return new RegExp(target);
   }
   // 对象
   if (target instanceof Date) {
-    return new Date(target)
+    return new Date(target);
   }
   // 函数直接返回
   if (typeof target === 'function') {
-    return target
+    return target;
   }
   // 如果不是对象直接返回
   if (typeof target !== 'object') {
-    return target
+    return target;
   }
 
   // [] || {}
-  const obj = new target.constructor()
+  const obj = new target.constructor();
 
   // 解决循环引用
   if (map.has(target)) {
-    return map.get(target)
+    return map.get(target);
   }
-  map.set(target, obj)
+  map.set(target, obj);
 
   for (let key in target) {
     // 如果是实例本身的属性
     if (target.hasOwnProperty(key)) {
-      obj[key] = deepClone(target[key], map)
+      obj[key] = deepClone(target[key], map);
     }
   }
-  return obj
+  return obj;
 }
 ```
 
@@ -143,14 +146,14 @@ function deepClone(target, map = new WeakMap()) {
 ```javascript
 function currying(callback, ...arg) {
   if (typeof callback !== 'function') {
-    throw 'callback is not a function'
+    throw 'callback is not a function';
   }
   // callbacl.length 可以获取到函数的参数个数
   return callback.length === arg.length
     ? callback(...arg)
     : function (...newArg) {
-        return currying(callback, ...arg, ...newArg)
-      }
+        return currying(callback, ...arg, ...newArg);
+      };
 }
 ```
 
@@ -165,13 +168,13 @@ timer，再设置定时器在一定时间内不触发事件则定时器执行。
 
 ```javascript
 function debounce(fn, wait) {
-  let timer = null
+  let timer = null;
   return function () {
-    clearTimeout(timer)
+    clearTimeout(timer);
     timer = window.setTimeout(() => {
-      fn.call(this, ...arguments)
-    }, wait)
-  }
+      fn.call(this, ...arguments);
+    }, wait);
+  };
 }
 ```
 
@@ -188,15 +191,15 @@ function debounce(fn, wait) {
 
 ```typescript
 function thorttle(fn, wait) {
-  let timer = null
+  let timer = null;
   return function () {
     if (!timer) {
       timer = setTimeout(() => {
-        fn.call(this, ...arguments)
-        timer = null
-      }, wait)
+        fn.call(this, ...arguments);
+        timer = null;
+      }, wait);
     }
-  }
+  };
 }
 ```
 
@@ -230,7 +233,7 @@ flat 方法参数为可选，表示需要递归的层级，即需要打散的数
 定需要递归的层级时传入 Infinity 可递归全部。
 
 ```javascript
-;[1, [2, [3]]].flat(Infinity) // [1, 2, 3]
+[1, [2, [3]]].flat(Infinity); // [1, 2, 3]
 ```
 
 #### 第二种方法--转为字符串
@@ -239,10 +242,10 @@ flat 方法参数为可选，表示需要递归的层级，即需要打散的数
 用场景，使用该方案如果是数值需要转换。
 
 ```javascript
-;[1, [2, [3]]]
+[1, [2, [3]]]
   .toString()
   .split(',')
-  .map(item => Number(item)) // [1, 2, 3]
+  .map((item) => Number(item)); // [1, 2, 3]
 ```
 
 #### 第三种方法--遍历递归
@@ -253,8 +256,8 @@ flat 方法参数为可选，表示需要递归的层级，即需要打散的数
 ```javascript
 function flat(arr) {
   return arr.reduce((prev, next) => {
-    return prev.concat(Array.isArray(next) ? flat(next) : next)
-  }, [])
+    return prev.concat(Array.isArray(next) ? flat(next) : next);
+  }, []);
 }
 ```
 
@@ -269,14 +272,14 @@ instanceof：用于检测构造函数的 prototype 属性是否出现在某个�
 ```javascript
 function myInstanceof(instance, parent) {
   // Object.getPrototypeOf获取的是instance的__proto__，ie没有__proto__！！！
-  let obj = Object.getPrototypeOf(instance)
+  let obj = Object.getPrototypeOf(instance);
   while (obj) {
     if (obj === parent.prototype) {
-      return true
+      return true;
     }
-    obj = Object.getPrototypeOf(obj)
+    obj = Object.getPrototypeOf(obj);
   }
-  return false
+  return false;
 }
 ```
 
@@ -293,12 +296,12 @@ function myInstanceof(instance, parent) {
 
 ```javascript
 function myNew(parent, ...arg) {
-  const obj = Object.create(parent.prototype)
-  const res = parent.call(obj, ...arg)
+  const obj = Object.create(parent.prototype);
+  const res = parent.call(obj, ...arg);
   if (res !== null && ['object', 'function'].includes(typeof res)) {
-    return res
+    return res;
   }
-  return obj
+  return obj;
 }
 ```
 
@@ -330,18 +333,18 @@ const a = {
 
   // toString
   toString() {
-    return this.i++
-  }
-}
+    return this.i++;
+  },
+};
 
-console.log(a == 1 && a == 2 && a == 3)
+console.log(a == 1 && a == 2 && a == 3);
 ```
 
 - array 转换和 object 类同，不过 toString 会调用数组的 join 方法。  
   代码：
 
 ```javascript
-const a = [1]
+const a = [1];
 
 // Symbol.toPrimitive
 /* a[Symbol.toPrimitive] = function () {
@@ -360,10 +363,10 @@ const a = [1]
 
 // join array本身的toString方法会调array的join方法
 a.join = function () {
-  return this[0]++
-}
+  return this[0]++;
+};
 
-console.log(a == 1 && a == 2 && a == 3)
+console.log(a == 1 && a == 2 && a == 3);
 ```
 
 ###### 劫持代理
@@ -384,12 +387,12 @@ const a = new Proxy(
   { _a: 1 },
   {
     get(a) {
-      return () => a._a++
-    }
-  }
-)
+      return () => a._a++;
+    },
+  },
+);
 
-console.log(a == 1 && a == 2 && a == 3)
+console.log(a == 1 && a == 2 && a == 3);
 ```
 
 ###### with
@@ -399,12 +402,12 @@ console.log(a == 1 && a == 2 && a == 3)
 代码：
 
 ```javascript
-let _a = 1
+let _a = 1;
 with ({
   get a() {
-    return _a++
-  }
+    return _a++;
+  },
 }) {
-  console.log(a == 1 && a == 2 && a == 3)
+  console.log(a == 1 && a == 2 && a == 3);
 }
 ```

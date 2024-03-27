@@ -32,7 +32,7 @@ module.exports = {
         (function() {
           var hm = document.createElement("script");
           hm.src = "https://hm.baidu.com/hm.js?e038ce4bbd9a46f547637490e22e2cd6";
-          var s = document.getElementsByTagName("script")[0]; 
+          var s = document.getElementsByTagName("script")[0];
           s.parentNode.insertBefore(hm, s);
         })();
       `,
@@ -42,24 +42,14 @@ module.exports = {
   themeConfig: {
     dateFormat: 'YYYY-MM-DD',
     smoothScroll: true,
-    nav: [
-      { text: '学海无涯', link: '/study/' },
-      { text: '苦作舟', link: '/pit/' },
-    ],
+    nav: [{ text: '文章', link: '/article/' }],
     directories: [
       {
-        id: 'study',
-        dirname: 'study',
-        title: '学海无涯',
-        path: '/study/',
-        itemPermalink: '/study/:slug',
-      },
-      {
-        id: 'pit',
-        dirname: 'pit',
-        title: '苦作舟',
-        path: '/pit/',
-        itemPermalink: '/pit/:slug',
+        id: 'article',
+        dirname: 'article',
+        title: '文章',
+        path: '/article/',
+        itemPermalink: '/article/:slug',
       },
     ],
     footer: {
