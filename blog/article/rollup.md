@@ -11,7 +11,7 @@ summary: 随着vite的兴起，越来越多的项目使用了rollup来构建打�
 
 ### 创建项目
 
-```javascript
+```shell
 mkdir project-app // 创建项目目录
 cd project-app // 进入项目目录
 npm init -y // 初始化项目生成package.json文件
@@ -19,7 +19,7 @@ npm init -y // 初始化项目生成package.json文件
 
 ### 安装 rollup
 
-```javascript
+```shell
 npm i -D rollup
 ```
 
@@ -49,7 +49,7 @@ export default {
 
 基本配置完了来打包试试，命令行输入命令。
 
-```javascript
+```shell
 rollup -c config/rollup.config.js
 ```
 
@@ -58,8 +58,10 @@ rollup -c config/rollup.config.js
 每次打包这样输入命令肯定不方便，可以在 package.json 文件中配置 scripts 脚本。
 
 ```json
-"scripts": {
+{
+  "scripts": {
     "build": "rollup -c config/rollup.config.js"
+  }
 }
 ```
 
@@ -78,7 +80,7 @@ js 高阶语法转换成浏览器识别的低阶语法。
 import babel from 'rollup-plugin-babel';
 
 export default {
-  ...
+  // ...
   plugins: [
     babel({
       exclude: 'node_modules/**', // 排除node_modules文件夹
@@ -109,7 +111,7 @@ export default {
 
 现在 ts 这么火，我们当然也要支持 ts 才行啊。
 
-```javascript
+```shell
 npm i -D typescript tslib @rollup/plugin-typescript
 ```
 
@@ -117,18 +119,11 @@ npm i -D typescript tslib @rollup/plugin-typescript
 
 ```javascript
 // /config/rollup.config.js
-...
 import ts from '@rollup/plugin-typescript';
-...
 
 export default {
   input: './src/index.ts',
-  ...
-  plugins: [
-    ...
-    ts(),
-    ...
-  ],
+  plugins: [ts()],
 };
 ```
 
@@ -138,7 +133,7 @@ export default {
 
 一个好的代码习惯是程序员必备的技能。
 
-```javascript
+```shell
 npm i -D eslint
 ```
 
@@ -150,7 +145,7 @@ npm i -D eslint
 
     因为rollup默认使用es6的import/export，而大部分npm模块是使用的commonjs模块导出的，所以需要@rollup/plugin-commonjs处理。
 
-```javascript
+```shell
 npm i -D @rollup/plugin-commonjs @rollup/plugin-node-resolve
 ```
 
@@ -158,19 +153,11 @@ npm i -D @rollup/plugin-commonjs @rollup/plugin-node-resolve
 
 ```javascript
 // /config/rollup.config.js
-...
 import nodeResolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-...
 
 export default {
-  ...
-  plugins: [
-    ...
-    nodeResolve(),
-    commonjs(),
-    ...
-  ],
+  plugins: [nodeResolve(), commonjs()],
 };
 ```
 
@@ -178,7 +165,7 @@ export default {
 
 不同环境有不同的配置，比如说生产环境需要压缩代码，开发环境需要开启 sourceMap 便于调试等等。
 
-```javascript
+```shell
 npm i -D rollup-merge-config
 ```
 
@@ -194,11 +181,13 @@ export default merge(baseConfig, {
 });
 ```
 
-```json
+```json5
 // package.json
-"scripts": {
-    "dev": "rollup -w -c config/rollup.config.dev.js",
-    "build": "rollup -c config/rollup.config.prod.js"
+{
+  scripts: {
+    dev: 'rollup -w -c config/rollup.config.dev.js',
+    build: 'rollup -c config/rollup.config.prod.js',
+  },
 }
 ```
 
@@ -206,44 +195,40 @@ export default merge(baseConfig, {
 
 推荐使用`rollup-plugin-terser`插件。
 
-```javascript
+```shell
 npm i -D rollup-plugin-terser
 ```
 
 修改配置文件，开发环境不用压缩代码，我们修改`rollup.config.prod.js`就好。
 
 ```javascript
-...
 import { terser } from 'rollup-plugin-terser';
 
 export default merge(baseConfig, {
-    plugins: [
-        terser()
-    ]
+  plugins: [terser()],
 });
 ```
 
 ### 本地服务及热更新
 
-```javascript
+```shell
 npm i -D rollup-plugin-serve rollup-plugin-livereload
 ```
 
 启动本地服务只是开发时需要，使用我们只需要修改开发环境配置文件。
 
 ```javascript
-...
 import serve from 'rollup-plugin-serve';
 import livereload from 'rollup-plugin-livereload';
 
 export default merge(baseConfig, {
-    plugins: [
-        serve({
-            port: 3001, // 端口号
-            open: true, // 自动打开浏览器
-        }),
-        livereload(), // 热跟新
-    ]
+  plugins: [
+    serve({
+      port: 3001, // 端口号
+      open: true, // 自动打开浏览器
+    }),
+    livereload(), // 热跟新
+  ],
 });
 ```
 
