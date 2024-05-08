@@ -1,10 +1,12 @@
 ---
+groups: js
 title: rollup入门
 date: 2021-03-23 10:00:00
 tags:
   - js
   - rollup
-summary: 随着vite的兴起，越来越多的项目使用了rollup来构建打包。rollup对比webpack的优势就是配置简单，打包产物体积更小，接下来给大家介绍rollup的基本使用。
+description: 随着vite的兴起，越来越多的项目使用了rollup来构建打包。rollup对比webpack的优势就是配置简单，打包产物体积更小，接下来给大家介绍rollup的基本使用。
+outline: [2, 4]
 ---
 
 官方地址： <https://rollupjs.org/guide/en/>
@@ -29,7 +31,7 @@ npm i -D rollup
 
 ```javascript
 // /src/index.js
-console.log('hello rollup!');
+console.log("hello rollup!");
 ```
 
 创建 config 文件夹存放项目配置文件，新建 rollup 基础配置文件 rollup.config.js
@@ -37,11 +39,11 @@ console.log('hello rollup!');
 ```javascript
 // /config/rollup.config.js
 export default {
-  input: 'src/index.js',
+  input: "src/index.js",
   output: {
-    file: 'dist/main.js',
-    format: 'umd', // 输出产物格式 'amd/es6/iife/umd/cjs'
-    name: 'test', // 当format为iife和umd时必须提供，会挂在在window下：window.test=...
+    file: "dist/main.js",
+    format: "umd", // 输出产物格式 'amd/es6/iife/umd/cjs'
+    name: "test", // 当format为iife和umd时必须提供，会挂在在window下：window.test=...
     sourcemap: true, // 生成sourceMap文件
   },
 };
@@ -77,13 +79,13 @@ js 高阶语法转换成浏览器识别的低阶语法。
 
 ```javascript
 // /config/rollup.config.js
-import babel from 'rollup-plugin-babel';
+import babel from "rollup-plugin-babel";
 
 export default {
   // ...
   plugins: [
     babel({
-      exclude: 'node_modules/**', // 排除node_modules文件夹
+      exclude: "node_modules/**", // 排除node_modules文件夹
     }),
   ],
 };
@@ -119,10 +121,10 @@ npm i -D typescript tslib @rollup/plugin-typescript
 
 ```javascript
 // /config/rollup.config.js
-import ts from '@rollup/plugin-typescript';
+import ts from "@rollup/plugin-typescript";
 
 export default {
-  input: './src/index.ts',
+  input: "./src/index.ts",
   plugins: [ts()],
 };
 ```
@@ -153,8 +155,8 @@ npm i -D @rollup/plugin-commonjs @rollup/plugin-node-resolve
 
 ```javascript
 // /config/rollup.config.js
-import nodeResolve from '@rollup/plugin-node-resolve';
-import commonjs from '@rollup/plugin-commonjs';
+import nodeResolve from "@rollup/plugin-node-resolve";
+import commonjs from "@rollup/plugin-commonjs";
 
 export default {
   plugins: [nodeResolve(), commonjs()],
@@ -173,8 +175,8 @@ npm i -D rollup-merge-config
 
 ```javascript
 // /config/rollup.config.dev.js   rollup.config.prod.js类似
-import merge from 'rollup-merge-config';
-import baseConfig from './rollup.config.js';
+import merge from "rollup-merge-config";
+import baseConfig from "./rollup.config.js";
 
 export default merge(baseConfig, {
   // TODO 个环境不同的配置文件
@@ -185,8 +187,8 @@ export default merge(baseConfig, {
 // package.json
 {
   scripts: {
-    dev: 'rollup -w -c config/rollup.config.dev.js',
-    build: 'rollup -c config/rollup.config.prod.js',
+    dev: "rollup -w -c config/rollup.config.dev.js",
+    build: "rollup -c config/rollup.config.prod.js",
   },
 }
 ```
@@ -202,7 +204,7 @@ npm i -D rollup-plugin-terser
 修改配置文件，开发环境不用压缩代码，我们修改`rollup.config.prod.js`就好。
 
 ```javascript
-import { terser } from 'rollup-plugin-terser';
+import { terser } from "rollup-plugin-terser";
 
 export default merge(baseConfig, {
   plugins: [terser()],
@@ -218,8 +220,8 @@ npm i -D rollup-plugin-serve rollup-plugin-livereload
 启动本地服务只是开发时需要，使用我们只需要修改开发环境配置文件。
 
 ```javascript
-import serve from 'rollup-plugin-serve';
-import livereload from 'rollup-plugin-livereload';
+import serve from "rollup-plugin-serve";
+import livereload from "rollup-plugin-livereload";
 
 export default merge(baseConfig, {
   plugins: [

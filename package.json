@@ -2,25 +2,23 @@
   "name": "blogs",
   "version": "0.0.1",
   "description": "个人博客",
+  "type": "module",
   "scripts": {
-    "build": "vuepress build blog",
-    "build:local": "set NODE_OPTIONS=--openssl-legacy-provider && vuepress build blog",
-    "dev": "vuepress dev blog",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs",
     "format": "prettier --cache --write .",
     "prepare": "husky install"
   },
-  "authors": [],
-  "license": "MIT",
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
-    "@vuepress/theme-blog": "^2.3.3",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
-    "vitepress": "^1.1.4",
-    "vuepress": "^1.9.10",
-    "vuepress-plugin-sitemap": "^2.3.1"
+    "@types/node": "^20.12.10",
+    "gray-matter": "^4.0.3",
+    "vitepress": "^1.1.4"
   },
   "volta": {
     "node": "20.10.0"

@@ -1,10 +1,12 @@
 ---
+groups: js
 title: 面试常见手写题
 date: 2023-11-24
 tags:
   - js
   - 面试
-summary: 面试中经常遇到的手写题总结，包括防抖节流、改变this指向、柯里化、扁平化等等。
+description: 面试中经常遇到的手写题总结，包括防抖节流、改变this指向、柯里化、扁平化等等。
+outline: [2, 4]
 ---
 
 ### call、apply
@@ -62,17 +64,17 @@ Function.prototype.bind = function (context, ...arg) {
 };
 
 const obj = {
-  name: 'sam',
+  name: "sam",
 };
 
 function f1(sex, age) {
-  this.say = '说话';
+  this.say = "说话";
   console.log(this);
   console.log(this.name, sex, age);
 }
-f1.prototype.type = '动物';
+f1.prototype.type = "动物";
 
-const f = f1.bind(obj, '男');
+const f = f1.bind(obj, "男");
 f(28);
 const o = new f(28);
 console.log(o.type);
@@ -106,11 +108,11 @@ function deepClone(target, map = new WeakMap()) {
     return new Date(target);
   }
   // 函数直接返回
-  if (typeof target === 'function') {
+  if (typeof target === "function") {
     return target;
   }
   // 如果不是对象直接返回
-  if (typeof target !== 'object') {
+  if (typeof target !== "object") {
     return target;
   }
 
@@ -145,8 +147,8 @@ function deepClone(target, map = new WeakMap()) {
 
 ```javascript
 function currying(callback, ...arg) {
-  if (typeof callback !== 'function') {
-    throw 'callback is not a function';
+  if (typeof callback !== "function") {
+    throw "callback is not a function";
   }
   // callbacl.length 可以获取到函数的参数个数
   return callback.length === arg.length
@@ -244,7 +246,7 @@ flat 方法参数为可选，表示需要递归的层级，即需要打散的数
 ```javascript
 [1, [2, [3]]]
   .toString()
-  .split(',')
+  .split(",")
   .map((item) => Number(item)); // [1, 2, 3]
 ```
 
@@ -298,7 +300,7 @@ function myInstanceof(instance, parent) {
 function myNew(parent, ...arg) {
   const obj = Object.create(parent.prototype);
   const res = parent.call(obj, ...arg);
-  if (res !== null && ['object', 'function'].includes(typeof res)) {
+  if (res !== null && ["object", "function"].includes(typeof res)) {
     return res;
   }
   return obj;
@@ -389,7 +391,7 @@ const a = new Proxy(
     get(a) {
       return () => a._a++;
     },
-  },
+  }
 );
 
 console.log(a == 1 && a == 2 && a == 3);
