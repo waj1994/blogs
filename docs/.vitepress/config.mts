@@ -12,4 +12,7 @@ export default defineConfig({
   themeConfig: {
     sidebar: await createSidebar(),
   },
+  sitemap: {
+    hostname: 'http://jsxwtx.cn'
+  }
 });
