@@ -14,5 +14,5 @@ export default defineConfig({
   },
   sitemap: {
     hostname: 'http://jsxwtx.cn'
-  }
+  },
 });
