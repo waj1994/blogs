@@ -11,6 +11,9 @@ export default defineConfig({
   lang: "zh-CN",
   themeConfig: {
     sidebar: await createSidebar(),
+    search: {
+      provider: 'local'
+    }
   },
   sitemap: {
     hostname: 'http://jsxwtx.cn'
