@@ -145,7 +145,7 @@ npm i -D eslint
 
 如果项目中需要依赖到第三方包，rollup 不像 webapck 直接引入就能使用，需要告诉 rollup 怎么处理。
 
-    因为rollup默认使用es6的import/export，而大部分npm模块是使用的commonjs模块导出的，所以需要@rollup/plugin-commonjs处理。
+因为 rollup 默认使用 es6 的 import/export，而大部分 npm 模块是使用的 commonjs 模块导出的，所以需要@rollup/plugin-commonjs 处理。
 
 ```shell
 npm i -D @rollup/plugin-commonjs @rollup/plugin-node-resolve
