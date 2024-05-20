@@ -30,7 +30,7 @@ function recognize(
   - chi_sim：中文
   - eng+chi_sim：中英文
   - ...
-    options：配置参数
+- options：配置参数
 
 ```typescript
 import tesseract from "tesseract.js";
