@@ -1,10 +1,6 @@
 ---
 groups: js
 title: rollup入门
-date: 2021-03-23 10:00:00
-tags:
-  - js
-  - rollup
 description: 随着vite的兴起，越来越多的项目使用了rollup来构建打包。rollup对比webpack的优势就是配置简单，打包产物体积更小，接下来给大家介绍rollup的基本使用。
 outline: [2, 4]
 ---

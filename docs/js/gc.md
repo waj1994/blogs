@@ -1,9 +1,6 @@
 ---
 groups: js
 title: 垃圾回收
-date: 2024-02-29
-tags:
-  - js
 description: js的垃圾回收机制以及v8中的优化方案
 outline: [2, 4]
 ---
