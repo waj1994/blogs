@@ -18,5 +18,6 @@ export default defineConfig({
   sitemap: {
     hostname: 'http://jsxwtx.cn'
   },
-  lastUpdated: true
+  lastUpdated: true,
+  base: '/blogs/'
 });
