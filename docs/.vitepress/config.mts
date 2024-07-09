@@ -19,5 +19,5 @@ export default defineConfig({
     hostname: 'http://jsxwtx.cn'
   },
   lastUpdated: true,
-  base: '/blogs/'
+  // base: '/blogs/'
 });
