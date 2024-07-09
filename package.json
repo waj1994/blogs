@@ -4,20 +4,19 @@
   "description": "个人博客",
   "type": "module",
   "scripts": {
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs",
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
     "format": "prettier --cache --write .",
     "prepare": "husky install"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
+    "@types/node": "^20.12.10",
+    "gray-matter": "^4.0.3",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
-    "@types/node": "^20.12.10",
-    "gray-matter": "^4.0.3",
     "vitepress": "^1.1.4"
   },
   "volta": {
