@@ -4,7 +4,7 @@ import createSidebar from "./plugins/createSidebar.mts";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "小王",
+  title: "小王说前端",
   description:
     "这是一个记录前端相关知识点的博客，包括但不限于js，vue，react，node等。",
   titleTemplate: ":title | 小王",
