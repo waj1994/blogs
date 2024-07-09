@@ -1,5 +1,5 @@
 ---
-groups: 记录
+groups: 其他
 title: 工具库
 description: 记录一些前端相关的工具库
 outline: [2, 4]
