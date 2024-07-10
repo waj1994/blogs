@@ -45,10 +45,10 @@ app.use("/", (req, res) => {
 ```
 
 第一次请求，响应数据，状态码 200
-![expires第一次请求](/http/cache/expires-1.png)
+![expires第一次请求](/http/cache/expires_1.png)
 
 第二次请求，取缓存的数据
-![expires第二次请求](/http/cache/expires-2.png)
+![expires第二次请求](/http/cache/expires_2.png)
 
 Expires 设置的是一个具体的时间，在该时间之前浏览器都会使用该缓存
 
@@ -80,10 +80,10 @@ app.use("/", (req, res) => {
 ```
 
 第一次请求，响应数据，状态码 200
-![cache-control第一次请求](/http/cache/cache-control-1.png)
+![cache-control第一次请求](/http/cache/cache_control_1.png)
 
 第二次请求，取缓存的数据
-![cache-control第二次请求](/http/cache/cache-control-2.png)
+![cache-control第二次请求](/http/cache/cache_control_2.png)
 
 :::tip
 如果同时存在 expires 和 Cache-Control，Cache-Control 优先级更高
@@ -124,10 +124,10 @@ app.use("/", (req, res) => {
 ```
 
 第一次请求数据，服务器获取文件上一次更新的时间并在响应头 last-modified 字段中返回给客户端，状态码 200
-![last-modified第一次请求](/http/cache/last-modified-1.png)
+![last-modified第一次请求](/http/cache/last_modified_1.png)
 
 第二次请求数据，客户端在 If-Modified-Since 字段中带上上一次请求的 last-modified 的值，服务器判断两个值是否相同，如果相同，则返回 304 状态码，否则返回最新资源，状态码 200
-![last-modified第二次请求](/http/cache/last-modified-2.png)
+![last-modified第二次请求](/http/cache/last_modified_2.png)
 
 :::tip
 缺点：
@@ -166,10 +166,10 @@ app.use("/", (req, res) => {
 ```
 
 第一次请求数据，服务器获取文件内容的 hash 值并在响应头 Etag 字段中返回给客户端，状态码 200
-![etag第一次请求](/http/cache/etag-1.png)
+![etag第一次请求](/http/cache/etag_1.png)
 
 第二次请求数据，客户端在请求头 If-None-Match 字段中带上上一次请求的 Etag 的值，服务器判断两个值是否相同，如果相同，则返回 304 状态码，否则返回最新资源，状态码 200
-![etag第二次请求](/http/cache/etag-2.png)
+![etag第二次请求](/http/cache/etag_2.png)
 
 ### 总结
 
