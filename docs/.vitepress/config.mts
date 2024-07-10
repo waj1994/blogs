@@ -18,12 +18,5 @@ export default defineConfig({
   sitemap: {
     hostname: 'http://jsxwtx.cn'
   },
-  lastUpdated: true,
-  vite: {
-    build: {
-      rollupOptions: {
-        external: ['*.png', '*.jpg', '*.jpeg']
-      }
-    }
-  }
+  lastUpdated: true
 });
