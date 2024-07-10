@@ -19,5 +19,11 @@ export default defineConfig({
     hostname: 'http://jsxwtx.cn'
   },
   lastUpdated: true,
-  // base: '/blogs/'
+  vite: {
+    build: {
+      rollupOptions: {
+        external: ['*.png', '*.jpg', '*.jpeg']
+      }
+    }
+  }
 });
