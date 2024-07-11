@@ -7,6 +7,8 @@ description: http缓存的定义、分类、场景，以及使用nodejs模拟实
 
 # HTTP 缓存
 
+[demo](https://github.com/wjie1994/test-demo/tree/master/http-cache)
+
 ### 什么是缓存
 
 一种常见的网络优化手段，减少重复请求  
