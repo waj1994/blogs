@@ -19,7 +19,8 @@ export default defineConfig({
     ]
   },
   head: [
-    ['meta', { name: 'msvalidate.01', content: '37DF9FCEF8FB058D63E35D0264ED92D8' }]
+    ['meta', { name: 'msvalidate.01', content: '37DF9FCEF8FB058D63E35D0264ED92D8' }],
+    ['meta', { name: 'baidu-site-verification', content: 'codeva-oU4YkaPCds' }],
   ],
   sitemap: {
     hostname: 'http://jsxwtx.cn'
