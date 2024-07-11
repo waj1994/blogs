@@ -18,6 +18,9 @@ export default defineConfig({
       { icon: 'github', link: 'https://github.com/wjie1994/blogs' }
     ]
   },
+  head: [
+    ['meta', { name: 'msvalidate.01', content: '37DF9FCEF8FB058D63E35D0264ED92D8' }]
+  ],
   sitemap: {
     hostname: 'http://jsxwtx.cn'
   },
