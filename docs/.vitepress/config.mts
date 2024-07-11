@@ -26,4 +26,10 @@ export default defineConfig({
     hostname: 'http://jsxwtx.cn'
   },
   lastUpdated: true,
+  markdown: {
+    image: {
+      // 默认禁用图片懒加载
+      lazyLoading: true
+    }
+  }
 });
