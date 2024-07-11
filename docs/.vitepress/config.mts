@@ -13,10 +13,13 @@ export default defineConfig({
     sidebar: await createSidebar(),
     search: {
       provider: 'local'
-    }
+    },
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/wjie1994/blogs' }
+    ]
   },
   sitemap: {
     hostname: 'http://jsxwtx.cn'
   },
-  lastUpdated: true
+  lastUpdated: true,
 });
