@@ -2,7 +2,7 @@
 groups: 网络
 title: 代理
 date: 2020-05-14
-description: 描述正向代理和反向代理的意义、区别。
+description: 记录网络代理的分类，意义，区别及使用场景
 ---
 
 # 代理
