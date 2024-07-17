@@ -1,8 +1,7 @@
 ---
+groups: ""
 layout: doc
-groups: 简介
-title: 说明
-description: 小王同学的个人博客，在这里你可以看到前端相关的技术文章，包括但不限js，react，vue，node，面试经验等等；查询日常开发中遇到的一些问题解决方案，学如逆水行舟，共勉！
+title: 简介
 next: false
 ---
 

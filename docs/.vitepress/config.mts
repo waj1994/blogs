@@ -6,23 +6,26 @@ import createSidebar from "./plugins/createSidebar.mts";
 export default defineConfig({
   title: "小王说前端",
   description:
-    "这是一个记录前端相关知识点的博客，包括但不限于js，vue，react，node等。",
-  titleTemplate: ":title | 小王",
+    "欢迎来到一个跟前端相关的博客。这里有js、vue、react、node等相关的知识点，还有常见的面识题，日常开发中遇到的一些比较难搞的问题等等；我们从基本使用，到底层原理，从方方面面带您领略前端的魅力。让我们一起加油，成为优秀的前端coder。",
+  titleTemplate: ":title - 小王说前端",
   lang: "zh-CN",
   themeConfig: {
     sidebar: await createSidebar(),
     search: {
-      provider: 'local'
+      provider: "local",
     },
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/wjie1994/blogs' }
-    ]
+      { icon: "github", link: "https://github.com/wjie1994/blogs" },
+    ],
   },
   head: [
-    ['meta', { name: 'msvalidate.01', content: '37DF9FCEF8FB058D63E35D0264ED92D8' }],
-    ['meta', { name: 'baidu-site-verification', content: 'codeva-oU4YkaPCds' }],
     [
-      'script',
+      "meta",
+      { name: "msvalidate.01", content: "37DF9FCEF8FB058D63E35D0264ED92D8" },
+    ],
+    ["meta", { name: "baidu-site-verification", content: "codeva-oU4YkaPCds" }],
+    [
+      "script",
       {},
       `
         var _hmt = _hmt || [];
@@ -32,17 +35,17 @@ export default defineConfig({
           var s = document.getElementsByTagName("script")[0]; 
           s.parentNode.insertBefore(hm, s);
         })();
-      `
-    ]
+      `,
+    ],
   ],
   sitemap: {
-    hostname: 'http://jsxwtx.cn'
+    hostname: "https://jsxwtx.cn",
   },
   lastUpdated: true,
   markdown: {
     image: {
       // 默认禁用图片懒加载
-      lazyLoading: true
-    }
-  }
+      lazyLoading: true,
+    },
+  },
 });

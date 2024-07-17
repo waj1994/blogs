@@ -57,7 +57,7 @@ export default async (): Promise<DefaultTheme.Sidebar> => {
   const flatArr = await deepResolve("../../");
   const result: DefaultTheme.Sidebar = [
     {
-      text: "简介",
+      text: "",
     },
   ];
   flatArr.forEach((item) => {
