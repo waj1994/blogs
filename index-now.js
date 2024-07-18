@@ -18,7 +18,7 @@ async function submit(urlList) {
         urlList,
       },
     });
-    console.log(res.status, "链接已推送");
+    console.log(res.status, urlList, "链接已推送");
   } catch (error) {
     console.log(error);
   }
