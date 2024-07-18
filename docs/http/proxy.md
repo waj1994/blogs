@@ -1,7 +1,6 @@
 ---
 groups: 网络
 title: 代理
-date: 2020-05-14
 description: 记录网络代理的分类，意义，区别及使用场景
 ---
 

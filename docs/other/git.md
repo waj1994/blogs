@@ -3,7 +3,6 @@ groups: 其他
 title: git常见命令
 description: 日常开发中涉及到的常用的git指令，包括但不限于git配置、分支、commit、tag、stash等操作
 outline: [2, 4]
-date: 2023-12-14 11:22:00
 ---
 
 ### 配置用户名和邮箱
