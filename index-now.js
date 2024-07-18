@@ -24,7 +24,7 @@ async function submit(urlList) {
   }
 }
 
-exec("git diff --name-status HEAD HEAD~2", (error, data) => {
+exec("git diff --name-status HEAD HEAD~1", (error, data) => {
   const list = data.split(/[\t\n]/).reduce((prev, next, index) => {
     if (
       index % 2 === 0 ||
