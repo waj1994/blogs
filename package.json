@@ -22,5 +22,8 @@
   },
   "volta": {
     "node": "20.10.0"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.11"
   }
 }
