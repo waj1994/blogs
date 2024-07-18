@@ -18,7 +18,7 @@ async function submit(urlList) {
         urlList,
       },
     });
-    console.log(res.status);
+    console.log(res.status, "链接已推送");
   } catch (error) {
     console.log(error);
   }
@@ -42,5 +42,5 @@ exec("git diff --name-status HEAD HEAD~2", (error, data) => {
     const [fileName, ...imagePath] = path.split("/").reverse();
     return [...prev, `${imagePath.reverse().join("/")}.html`];
   }, []);
-  submit([...new Set(list)].map((item) => `${host}/${item}`));
+  list.length && submit([...new Set(list)].map((item) => `${host}/${item}`));
 });
