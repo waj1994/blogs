@@ -23,7 +23,7 @@ export default defineConfig({
       "meta",
       { name: "msvalidate.01", content: "37DF9FCEF8FB058D63E35D0264ED92D8" },
     ],
-    ["meta", { name: "baidu-site-verification", content: "codeva-BH1TEgYZiB" }],
+    ["meta", { name: "baidu-site-verification", content: "codeva-7WLMk36AAG" }],
     [
       "script",
       {},
