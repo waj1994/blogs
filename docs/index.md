@@ -26,7 +26,7 @@ hi, 我是小王同学。
 
 右上角是我的[github](https://github.com/wjie1994/blogs)账号，帮我点点 star！
 
-还有，要是有前端项目的（你懂的，别问，缺钱），就 mail 我哦：<a href="mailto:wjie2021@163.com">wjie2021@163.com</a> 。
+还有，要是有前端项目的（你懂的，别问，缺钱），就 email 我哦：<a href="mailto:wjie2021@163.com">wjie2021@163.com</a> 。
 
 <style scoped>
   .content p {
