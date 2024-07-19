@@ -5,7 +5,7 @@
 import axios from "axios";
 import { exec } from "child_process";
 
-const host = "https://jsxwtx.cn";
+const host = "https://wjie1994.com";
 
 async function submit(urlList) {
   try {

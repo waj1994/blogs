@@ -39,7 +39,7 @@ export default defineConfig({
     ],
   ],
   sitemap: {
-    hostname: "https://jsxwtx.cn",
+    hostname: "https://wjie1994.com",
   },
   lastUpdated: true,
   markdown: {
