@@ -23,7 +23,7 @@ export default defineConfig({
       "meta",
       { name: "msvalidate.01", content: "37DF9FCEF8FB058D63E35D0264ED92D8" },
     ],
-    ["meta", { name: "baidu-site-verification", content: "codeva-7WLMk36AAG" }],
+    ["meta", { name: "baidu-site-verification", content: "codeva-ASHqbDtWDW" }],
     [
       "script",
       {},
@@ -31,7 +31,7 @@ export default defineConfig({
         var _hmt = _hmt || [];
         (function() {
           var hm = document.createElement("script");
-          hm.src = "https://hm.baidu.com/hm.js?6efafa5697ff9b6048a64146c3d58fa7";
+          hm.src = "https://hm.baidu.com/hm.js?b3909b0f72d4074ce249a42928802554";
           var s = document.getElementsByTagName("script")[0]; 
           s.parentNode.insertBefore(hm, s);
         })();
@@ -51,7 +51,7 @@ export default defineConfig({
     ],
   ],
   sitemap: {
-    hostname: "https://wjie1994.com",
+    hostname: "https://wj1994.cn",
   },
   lastUpdated: true,
   markdown: {
