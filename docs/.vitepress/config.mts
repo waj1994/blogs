@@ -23,7 +23,7 @@ export default defineConfig({
       "meta",
       { name: "msvalidate.01", content: "37DF9FCEF8FB058D63E35D0264ED92D8" },
     ],
-    ["meta", { name: "baidu-site-verification", content: "codeva-oU4YkaPCds" }],
+    ["meta", { name: "baidu-site-verification", content: "codeva-BH1TEgYZiB" }],
     [
       "script",
       {},
@@ -31,7 +31,7 @@ export default defineConfig({
         var _hmt = _hmt || [];
         (function() {
           var hm = document.createElement("script");
-          hm.src = "https://hm.baidu.com/hm.js?9667d5e1bec7584f6b19dfd3313973c7";
+          hm.src = "https://hm.baidu.com/hm.js?6efafa5697ff9b6048a64146c3d58fa7";
           var s = document.getElementsByTagName("script")[0]; 
           s.parentNode.insertBefore(hm, s);
         })();
