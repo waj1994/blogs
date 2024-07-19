@@ -37,6 +37,18 @@ export default defineConfig({
         })();
       `,
     ],
+    [
+      "script",
+      {},
+      `window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };`,
+    ],
+    [
+      "script",
+      {
+        defer: 'defer',
+        src: '/_vercel/speed-insights/script.js'
+      },
+    ],
   ],
   sitemap: {
     hostname: "https://wjie1994.com",

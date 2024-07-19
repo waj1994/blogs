@@ -24,6 +24,7 @@
     "node": "20.10.0"
   },
   "dependencies": {
+    "@vercel/speed-insights": "^1.0.12",
     "dayjs": "^1.11.11"
   }
 }
