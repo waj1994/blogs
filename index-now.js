@@ -13,8 +13,8 @@ async function submit(urlList) {
       method: "post",
       data: {
         host,
-        key: "6ccd6958b3f64192940506fd425f8171",
-        keyLocation: `${host}/6ccd6958b3f64192940506fd425f8171.txt`,
+        key: "4c4d9bc5972846db81278b68848e416c",
+        keyLocation: `${host}/4c4d9bc5972846db81278b68848e416c.txt`,
         urlList,
       },
     });
