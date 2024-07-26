@@ -1,3 +1,5 @@
 node_modules
-*.yaml
+.umi
+.umi-production
 dist
+public

@@ -1,3 +1,16 @@
 {
-  "*.{md,json,vue,js}": ["prettier --cache --write"]
+  "*.{md,json}": [
+    "prettier --cache --write"
+  ],
+  "*.{js,jsx}": [
+    "eslint lint --fix --no-error-on-unmatched-pattern",
+    "prettier --cache --write"
+  ],
+  "*.{css,less}": [
+    "prettier --cache --write"
+  ],
+  "*.ts?(x)": [
+    "eslint lint --fix --no-error-on-unmatched-pattern",
+    "prettier --cache --parser=typescript --write"
+  ]
 }

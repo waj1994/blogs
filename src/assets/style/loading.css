@@ -1,0 +1,41 @@
+.lading-container {
+  height: calc(100vh - 126px - 266px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lading-container .text {
+  position: relative;
+  font-size: 30px;
+  font-weight: 500;
+  color: green;
+}
+
+.lading-container .text .active {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: black;
+  width: 0;
+  overflow: hidden;
+  animation: loading 3s ease infinite;
+}
+
+.dark .lading-container .text .active {
+  color: white;
+}
+
+@keyframes loading {
+  0% {
+    width: 0;
+  }
+
+  50% {
+    width: 100%;
+  }
+
+  100% {
+    width: 0;
+  }
+}
