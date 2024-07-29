@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {};
   }
   return {
-    title,
+    title: `${title} -- ${process.env.SITE_TITLE}`,
     description,
     keywords: keywords?.split(',').join(),
   };
@@ -86,7 +86,7 @@ export default async function Details({ params: { slug }, ...obj }: Props) {
               width={31}
               height={31}
             />
-            <span className="font-bold">小王说前端</span>
+            <span className="font-bold">{process.env.SITE_TITLE}</span>
             <span>
               ，{dayjs(data.date).format('YYYY-MM-DD')}
               <span> · {Math.ceil(minutes)} min read</span>
@@ -98,7 +98,7 @@ export default async function Details({ params: { slug }, ...obj }: Props) {
             <Image
               fill={true}
               src={`/docs-image/${slug}.png`}
-              alt=""
+              alt={`${data.title}`}
             />
           </div>
           <div

@@ -5,10 +5,6 @@ keywords: http缓存,http缓存分类,http缓存场景,http缓存实现
 description: http缓存的定义、分类、场景，以及使用nodejs模拟实现。
 ---
 
-# HTTP 缓存
-
-[demo](https://github.com/wjie1994/test-demo/tree/master/http-cache)
-
 ### 什么是缓存
 
 一种常见的网络优化手段，减少重复请求  
@@ -167,3 +163,5 @@ app.use('/', (req, res) => {
 - Etag 精准度高于 Last-Modified，但生成 hash 需要不小的内存开销，性能比 Last-Modified 差
 - 协商缓存并不会减少网络请求次数
 - 一般网站部署时，html 文件使用协商缓存，js、css 等不经常变化的静态资源使用强缓存
+
+[demo](https://github.com/wjie1994/test-demo/tree/master/http-cache)
