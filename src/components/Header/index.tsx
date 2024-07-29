@@ -3,7 +3,7 @@
  */
 'use client';
 import { Metadata } from 'next';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 import GithubIcon from '@/assets/svg/github.svg';
@@ -54,6 +54,7 @@ export default function Header({ metadata }: { metadata: Metadata }) {
           <GithubIcon />
         </a>
         <button
+          hidden={usePathname() !== '/'}
           className="icon-btn"
           onClick={handleTheme}
         >
