@@ -1,65 +1,68 @@
 ---
-import { Icon } from 'astro-icon/components'
+import SpeedInsights from "@vercel/speed-insights/astro";
+import { Icon } from "astro-icon/components";
 
-import { SITE_TITLE } from '../consts'
+import { SITE_TITLE } from "../consts";
 
-const { className = '' } = Astro.props
+const { className = "" } = Astro.props;
 ---
 
 <div class={`w-full flex pt-[66px] ${className}`}>
-  <div class='w-full flex justify-between'>
-    <h1 class='leading-[60px]'>
+  <div class="w-full flex justify-between">
+    <h1 class="leading-[60px]">
       <a
-        class='flex items-center text-[20px] font-600 text-black dark:text-white'
-        href='/'
+        class="flex items-center text-[20px] font-600 text-black dark:text-white"
+        href="/"
       >
-        <Icon name='react' font-size={60} class='mr-20px' />
+        <Icon name="react" font-size={60} class="mr-20px" />
         {SITE_TITLE}
       </a>
     </h1>
   </div>
-  <div class='flex items-center'>
-    <a class='icon-btn mr-[20px]' href='mailto:wjie2021@163.com'>
-      <Icon name='email' font-size={24} />
+  <div class="flex items-center">
+    <a class="icon-btn mr-[20px]" href="mailto:wjie2021@163.com">
+      <Icon name="email" font-size={24} />
     </a>
     <a
-      class='icon-btn mr-[20px]'
-      href='https://github.com/wjie1994/blogs'
-      target='_blank'
+      class="icon-btn mr-[20px]"
+      href="https://github.com/wjie1994/blogs"
+      target="_blank"
     >
-      <Icon name='github' font-size={24} />
+      <Icon name="github" font-size={24} />
     </a>
-    <button id='theme-toggle' class='icon-btn'>
-      <Icon id='theme-moon' name='moon' font-size={24} />
-      <Icon id='theme-sun' name='sun' font-size={24} />
+    <button id="theme-toggle" class="icon-btn">
+      <Icon id="theme-moon" name="moon" font-size={24} />
+      <Icon id="theme-sun" name="sun" font-size={24} />
     </button>
   </div>
 </div>
 
+<SpeedInsights />
+
 <script>
   function changeBtn(theme: string) {
-    if (theme === 'light') {
-      document.querySelector('#theme-sun')?.classList.add('hidden')
-      document.querySelector('#theme-moon')?.classList.remove('hidden')
+    if (theme === "light") {
+      document.querySelector("#theme-sun")?.classList.add("hidden");
+      document.querySelector("#theme-moon")?.classList.remove("hidden");
     } else {
-      document.querySelector('#theme-sun')?.classList.remove('hidden')
-      document.querySelector('#theme-moon')?.classList.add('hidden')
+      document.querySelector("#theme-sun")?.classList.remove("hidden");
+      document.querySelector("#theme-moon")?.classList.add("hidden");
     }
   }
   function first() {
-    const theme = localStorage.getItem('theme') || 'light'
-    document.documentElement.setAttribute('class', theme)
-    changeBtn(theme)
+    const theme = localStorage.getItem("theme") || "light";
+    document.documentElement.setAttribute("class", theme);
+    changeBtn(theme);
   }
-  first()
+  first();
   function handleTheme() {
-    const theme = localStorage.getItem('theme') || 'light'
-    const newTheme = theme === 'light' ? 'dark' : 'light'
-    localStorage.setItem('theme', newTheme)
-    document.documentElement.setAttribute('class', newTheme)
-    changeBtn(newTheme)
+    const theme = localStorage.getItem("theme") || "light";
+    const newTheme = theme === "light" ? "dark" : "light";
+    localStorage.setItem("theme", newTheme);
+    document.documentElement.setAttribute("class", newTheme);
+    changeBtn(newTheme);
   }
   document
-    .querySelector('#theme-toggle')
-    ?.addEventListener('click', handleTheme)
+    .querySelector("#theme-toggle")
+    ?.addEventListener("click", handleTheme);
 </script>
