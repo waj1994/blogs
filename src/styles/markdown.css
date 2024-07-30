@@ -1249,15 +1249,15 @@
     h3,
     h4,
     h5 {
-      @apply px-20px;
+      @apply !px-20px;
     }
 
     ul {
-      @apply pl-50px pr-20px pb-20px;
+      @apply !pl-50px !pr-20px !pb-20px;
     }
 
     pre {
-      @apply rounded-0;
+      @apply !rounded-0;
     }
   }
 }
