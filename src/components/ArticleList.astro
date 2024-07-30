@@ -1,30 +1,30 @@
 ---
-import dayjs from 'dayjs'
+import dayjs from "dayjs";
 
-import { type Post } from '../pages/index.astro'
+import { type Post } from "../pages/index.astro";
 const { list } = Astro.props as {
-  list: Post[]
-}
+  list: Post[];
+};
 ---
 
-<ul class='mt-100px'>
+<ul class="mt-100px">
   {
     list.map((item) => (
-      <li class='mb-50px group w-full sm:w-700px py-30px sm:p-0 mx-auto'>
+      <li class="mb-50px group w-full md:w-700px py-30px sm:p-0 mx-auto">
         <a
-          class='bg-white dark:bg-#1D2128 !sm:bg-transparent !sm:shadow-none'
+          class="bg-white dark:bg-#1D2128 !sm:bg-transparent !sm:shadow-none"
           href={`/${item.slug}`}
-          target='_blank'
+          target="_blank"
         >
-          <div class=''>
-            <h2 class='mb-10px text-black dark:text-white text-21px font-bold w-full ellipsis group-hover:text-#6166DC dark:group-hover:text-#E9DAAC'>
+          <div class="">
+            <h2 class="mb-10px text-black dark:text-white text-21px font-bold w-full ellipsis group-hover:text-#6166DC dark:group-hover:text-#E9DAAC">
               {item.data.title}
             </h2>
-            <p class='mb-10px text-#73737D text-16px ellipsis'>
+            <p class="mb-10px text-#73737D text-16px ellipsis">
               {item.data.description}
             </p>
-            <div class='text-#73737D text-16px opacity-33 dark:opacity-77'>
-              <span>{dayjs(item.data.pubDate).format('YYYY-MM-DD')} </span>
+            <div class="text-#73737D text-16px opacity-33 dark:opacity-77">
+              <span>{dayjs(item.data.pubDate).format("YYYY-MM-DD")} </span>
             </div>
           </div>
         </a>
