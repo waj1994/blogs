@@ -1,0 +1,39 @@
+---
+import BaseHead from '../components/BaseHead.astro'
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts'
+import { getCollection } from 'astro:content'
+import ArticleList from '../components/ArticleList.astro'
+
+export interface Post {
+  id: string
+  slug: string
+  data: {
+    title: string
+    pubDate: Date
+    heroImage: string
+    description: string
+  }
+}
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+) as Post[]
+---
+
+<!doctype html>
+<html lang='zh-cn'>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body class='relative bg-white dark:bg-#111216'>
+    <div
+      class='max-w-full sm:max-w-567px md:max-w-750px xl:max-w-960px mx-auto px-20px'
+    >
+      <Header />
+      <ArticleList list={posts} />
+      <Footer />
+    </div>
+  </body>
+</html>

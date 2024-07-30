@@ -1,3 +1,3 @@
-# blogs
+# Astro Starter Kit: Blog
 
-nextjs14 生成得静态博客站点
+使用[Astro](https://astro.build/)搭建的博客

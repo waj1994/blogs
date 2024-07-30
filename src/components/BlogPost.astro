@@ -1,0 +1,37 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import dayjs from 'dayjs'
+
+import BaseHead from './BaseHead.astro'
+import Header from './Header.astro'
+import Footer from './Footer.astro'
+
+import '../styles/markdown.css'
+
+type Props = CollectionEntry<'blog'>['data']
+
+const { title, description, pubDate } = Astro.props
+---
+
+<html lang='zh-cn'>
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+  <body
+    class='relative bg-white dark:bg-#111216 max-w-full sm:max-w-567px md:max-w-750px xl:max-w-960px mx-auto'
+  >
+    <Header className='px-20px' />
+    <main class='mt-100px sm:px-20px max-w-700px mx-auto'>
+      <article>
+        <div class='markdown-body'>
+          <h1 class='!mb-20px'>{title}</h1>
+          <div class='mb-50px text-#73737D opacity-90'>
+            {dayjs(pubDate).format('YYYY-MM-DD')}
+          </div>
+          <slot />
+        </div>
+      </article>
+    </main>
+    <Footer />
+  </body>
+</html>

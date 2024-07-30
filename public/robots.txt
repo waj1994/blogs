@@ -1,3 +1,3 @@
-Sitemap: https://wj1994.cn/sitemap.xml
+Sitemap: https://wj1994.cn/sitemap-index.xml
 
 User-agent: *

@@ -2,7 +2,7 @@
   "*.{md,json}": [
     "prettier --cache --write"
   ],
-  "*.{js,jsx}": [
+  "*.{js,jsx,astro}": [
     "eslint lint --fix --no-error-on-unmatched-pattern",
     "prettier --cache --write"
   ],
