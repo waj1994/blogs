@@ -5,6 +5,7 @@ import dayjs from "dayjs";
 import BaseHead from "./BaseHead.astro";
 import Header from "./Header.astro";
 import Footer from "./Footer.astro";
+import { SITE_TITLE_SUFFIX } from "../consts";
 
 import "../styles/markdown.css";
 
@@ -15,7 +16,10 @@ const { title, description, pubDate } = Astro.props;
 
 <html lang="zh-cn">
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead
+      title={`${title} - ${SITE_TITLE_SUFFIX}`}
+      description={description}
+    />
   </head>
   <body
     class="relative bg-white dark:bg-#111216 max-w-full sm:max-w-567px md:max-w-750px xl:max-w-960px mx-auto"
