@@ -39,25 +39,42 @@ const { className = "" } = Astro.props;
 
 <SpeedInsights />
 
-<script>
+<script is:inline>
+  const storageKey = "blog-theme";
+
+  /**
+   * isDark: true -> dark, false -> light
+   */
+  function isDarkStr(dark) {
+    return dark ? "dark" : "light";
+  }
   /**
    * 修改giscus设置
    */
-  function changeGiscus(message: {
-    setConfig: {
-      theme: string;
-    };
-  }) {
-    const iframe = document.querySelector(
-      "iframe.giscus-frame",
-    ) as HTMLIFrameElement;
+  function changeGiscus(message) {
+    const iframe = document.querySelector("iframe.giscus-frame");
     if (!iframe || !iframe.contentWindow) return;
     iframe.contentWindow.postMessage({ giscus: message }, "https://giscus.app");
   }
+
+  /**
+   * 获取系统主题
+   */
+  function getSystemTheme() {
+    return isDarkStr(window.matchMedia("(prefers-color-scheme: dark)").matches);
+  }
+
+  /**
+   * 获取主题
+   */
+  function getCacheTheme() {
+    return localStorage.getItem(storageKey) || getSystemTheme();
+  }
+
   /**
    * 修改主题
    */
-  function changeBtn(theme: string) {
+  function changeBtn(theme) {
     if (theme === "light") {
       document.querySelector("#theme-sun")?.classList.add("hidden");
       document.querySelector("#theme-moon")?.classList.remove("hidden");
@@ -65,26 +82,46 @@ const { className = "" } = Astro.props;
       document.querySelector("#theme-sun")?.classList.remove("hidden");
       document.querySelector("#theme-moon")?.classList.add("hidden");
     }
+    document.documentElement.setAttribute("class", theme);
+    localStorage.setItem(storageKey, theme);
     changeGiscus({
       setConfig: {
         theme,
       },
     });
   }
+
+  /**
+   * 初始化
+   */
   function first() {
-    const theme = localStorage.getItem("theme") || "light";
-    document.documentElement.setAttribute("class", theme);
+    const theme = getCacheTheme();
     changeBtn(theme);
   }
   first();
+
+  /**
+   * 按钮切换主题
+   */
   function handleTheme() {
-    const theme = localStorage.getItem("theme") || "light";
-    const newTheme = theme === "light" ? "dark" : "light";
-    localStorage.setItem("theme", newTheme);
-    document.documentElement.setAttribute("class", newTheme);
+    const theme = document.documentElement.getAttribute("class");
+    const newTheme = isDarkStr(!(theme === "dark"));
     changeBtn(newTheme);
   }
   document
     .querySelector("#theme-toggle")
     ?.addEventListener("click", handleTheme);
+
+  // 监听系统主题变化
+  window
+    .matchMedia("(prefers-color-scheme: dark)")
+    .addEventListener("change", ({ matches }) => {
+      changeBtn(isDarkStr(matches));
+    });
+
+  // 监听localStorage变化
+  // 注意：该方法只有在其他标签修改才会触发
+  window.addEventListener("storage", ({ key, newValue }) => {
+    key === storageKey && changeBtn(newValue);
+  });
 </script>

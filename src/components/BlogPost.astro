@@ -31,14 +31,14 @@ const { title, description, pubDate } = Astro.props;
           <slot />
         </div>
       </article>
-      <div id="giscus-container" class="giscus mt-100px"></div>
+      <div id="giscus-container" class="giscus mt-100px px-20px sm:px-0"></div>
     </main>
     <Footer />
   </body>
 </html>
 
-<script>
-  const theme = localStorage.getItem("theme") || "light";
+<script is:inline>
+  const theme = window?.getCacheTheme();
   const script = document.createElement("script");
   script.src = "https://giscus.app/client.js";
   script.setAttribute("data-repo", "wjie1994/blogs");
