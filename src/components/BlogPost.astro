@@ -31,7 +31,29 @@ const { title, description, pubDate } = Astro.props;
           <slot />
         </div>
       </article>
+      <div id="giscus-container" class="giscus mt-100px"></div>
     </main>
     <Footer />
   </body>
 </html>
+
+<script>
+  const theme = localStorage.getItem("theme") || "light";
+  const script = document.createElement("script");
+  script.src = "https://giscus.app/client.js";
+  script.setAttribute("data-repo", "wjie1994/blogs");
+  script.setAttribute("data-repo-id", "R_kgDOMTwM0w");
+  script.setAttribute("data-category", "Announcements");
+  script.setAttribute("data-category-id", "DIC_kwDOMTwM084ChSnv");
+  script.setAttribute("data-mapping", "title");
+  script.setAttribute("data-strict", "0");
+  script.setAttribute("data-reactions-enabled", "0");
+  script.setAttribute("data-emit-metadata", "0");
+  script.setAttribute("data-input-position", "top");
+  script.setAttribute("data-theme", theme);
+  script.setAttribute("data-lang", "zh-CN");
+  script.setAttribute("data-loading", "lazy");
+  script.setAttribute("crossorigin", "anonymous");
+  script.async = true;
+  document.getElementById("giscus-container")?.appendChild(script);
+</script>

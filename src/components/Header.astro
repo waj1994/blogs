@@ -40,6 +40,23 @@ const { className = "" } = Astro.props;
 <SpeedInsights />
 
 <script>
+  /**
+   * 修改giscus设置
+   */
+  function changeGiscus(message: {
+    setConfig: {
+      theme: string;
+    };
+  }) {
+    const iframe = document.querySelector(
+      "iframe.giscus-frame",
+    ) as HTMLIFrameElement;
+    if (!iframe || !iframe.contentWindow) return;
+    iframe.contentWindow.postMessage({ giscus: message }, "https://giscus.app");
+  }
+  /**
+   * 修改主题
+   */
   function changeBtn(theme: string) {
     if (theme === "light") {
       document.querySelector("#theme-sun")?.classList.add("hidden");
@@ -48,6 +65,11 @@ const { className = "" } = Astro.props;
       document.querySelector("#theme-sun")?.classList.remove("hidden");
       document.querySelector("#theme-moon")?.classList.add("hidden");
     }
+    changeGiscus({
+      setConfig: {
+        theme,
+      },
+    });
   }
   function first() {
     const theme = localStorage.getItem("theme") || "light";
