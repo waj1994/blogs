@@ -122,7 +122,7 @@
   list-style: none;
   counter-reset: list 0;
   position: relative;
-  padding: 15px 0px 30px 30px;
+  padding: 15px 0px 20px 30px;
   margin: 0px auto;
   font-size: 18px;
   width: 100%;
@@ -402,15 +402,14 @@
 .markdown-body h4,
 .markdown-body h5,
 .markdown-body h6 {
-  margin-top: 40px;
-  margin-bottom: 50px;
+  margin-top: 20px;
+  margin-bottom: 30px;
   font-weight: var(--base-text-weight-semibold, 600);
   line-height: 1.25;
 }
 
 .markdown-body h2 {
   font-weight: var(--base-text-weight-semibold, 600);
-  padding-bottom: 0.3em;
   font-size: 2em;
 }
 
@@ -436,7 +435,8 @@
 }
 
 .markdown-body p {
-  margin: 0px auto 35px;
+  margin: 0px auto;
+  padding-bottom: 20px;
   line-height: 1.756;
 }
 
