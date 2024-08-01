@@ -112,20 +112,6 @@
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   margin: 0;
-  font-family:
-    "SF Pro Display",
-    -apple-system,
-    BlinkMacSystemFont,
-    "San Francisco",
-    "Helvetica Neue",
-    Helvetica,
-    Ubuntu,
-    Roboto,
-    Noto,
-    "Segoe UI",
-    Arial,
-    sans-serif;
-  font-size: 14px;
   line-height: 1.5;
   word-wrap: break-word;
   color: var(--text-color);
@@ -452,7 +438,6 @@
 .markdown-body p {
   margin: 0px auto 35px;
   line-height: 1.756;
-  font-size: 18px;
 }
 
 .markdown-body blockquote {
@@ -694,10 +679,6 @@
   height: 8px;
   width: 8px;
   background: var(--text-color);
-}
-
-.markdown-body li > p {
-  margin-top: 16px;
 }
 
 .markdown-body li + li {
