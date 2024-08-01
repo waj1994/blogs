@@ -19,12 +19,13 @@ const { className = "" } = Astro.props;
       </a>
     </h1>
   </div>
-  <div class="flex items-center">
-    <a class="icon-btn mr-[20px]" href="mailto:wjie2021@163.com">
+  <div class="flex items-center gap-x-20px">
+    <div id="search-contaienr"></div>
+    <a class="icon-btn" href="mailto:wjie2021@163.com">
       <Icon name="email" font-size={24} />
     </a>
     <a
-      class="icon-btn mr-[20px]"
+      class="icon-btn"
       href="https://github.com/wjie1994/blogs"
       target="_blank"
     >
@@ -83,6 +84,7 @@ const { className = "" } = Astro.props;
       document.querySelector("#theme-moon")?.classList.add("hidden");
     }
     document.documentElement.setAttribute("class", theme);
+    document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem(storageKey, theme);
     changeGiscus({
       setConfig: {

@@ -13,3 +13,12 @@ body {
   overflow: hidden; /* 隐藏溢出文本 */
   text-overflow: ellipsis; /* 使用省略号截断溢出文本 */
 }
+
+.DocSearch-Button {
+  border-radius: 6px !important;
+  background-color: #f6f6f7;
+}
+
+.dark .DocSearch-Button {
+  background-color: #161618;
+}

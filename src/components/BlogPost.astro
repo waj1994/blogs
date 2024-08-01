@@ -5,6 +5,7 @@ import dayjs from "dayjs";
 import BaseHead from "./BaseHead.astro";
 import Header from "./Header.astro";
 import Footer from "./Footer.astro";
+import BaseFooter from "./BaseFooter.astro";
 import { SITE_TITLE_SUFFIX } from "../consts";
 
 import "../styles/markdown.css";
@@ -22,7 +23,7 @@ const { title, description, pubDate } = Astro.props;
     />
   </head>
   <body
-    class="relative bg-white dark:bg-#111216 max-w-full sm:max-w-567px md:max-w-750px xl:max-w-960px mx-auto"
+    class="relative bg-white dark:bg-#1b1b1f max-w-full sm:max-w-567px md:max-w-750px xl:max-w-960px mx-auto"
   >
     <Header className="px-20px" />
     <main class="mt-100px sm:px-20px max-w-700px mx-auto">
@@ -38,26 +39,6 @@ const { title, description, pubDate } = Astro.props;
       <div id="giscus-container" class="giscus mt-100px px-20px sm:px-0"></div>
     </main>
     <Footer />
+    <BaseFooter />
   </body>
 </html>
-
-<script is:inline>
-  const theme = window?.getCacheTheme();
-  const script = document.createElement("script");
-  script.src = "https://giscus.app/client.js";
-  script.setAttribute("data-repo", "wjie1994/blogs");
-  script.setAttribute("data-repo-id", "R_kgDOMTwM0w");
-  script.setAttribute("data-category", "Announcements");
-  script.setAttribute("data-category-id", "DIC_kwDOMTwM084ChSnv");
-  script.setAttribute("data-mapping", "title");
-  script.setAttribute("data-strict", "0");
-  script.setAttribute("data-reactions-enabled", "0");
-  script.setAttribute("data-emit-metadata", "0");
-  script.setAttribute("data-input-position", "top");
-  script.setAttribute("data-theme", theme);
-  script.setAttribute("data-lang", "zh-CN");
-  script.setAttribute("data-loading", "lazy");
-  script.setAttribute("crossorigin", "anonymous");
-  script.async = true;
-  document.getElementById("giscus-container")?.appendChild(script);
-</script>

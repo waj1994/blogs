@@ -1,0 +1,46 @@
+<!-- 百度统计 -->
+<script is:inline>
+  // @ts-ignore
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?6efafa5697ff9b6048a64146c3d58fa7";
+    var s = document.getElementsByTagName("script")[0];
+    // @ts-ignore
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+<!-- giscus评论 -->
+<script is:inline>
+  const theme = window?.getCacheTheme();
+  const script = document.createElement("script");
+  script.src = "https://giscus.app/client.js";
+  script.setAttribute("data-repo", "wjie1994/blogs");
+  script.setAttribute("data-repo-id", "R_kgDOMTwM0w");
+  script.setAttribute("data-category", "Announcements");
+  script.setAttribute("data-category-id", "DIC_kwDOMTwM084ChSnv");
+  script.setAttribute("data-mapping", "title");
+  script.setAttribute("data-strict", "0");
+  script.setAttribute("data-reactions-enabled", "0");
+  script.setAttribute("data-emit-metadata", "0");
+  script.setAttribute("data-input-position", "top");
+  script.setAttribute("data-theme", theme);
+  script.setAttribute("data-lang", "zh-CN");
+  script.setAttribute("data-loading", "lazy");
+  script.setAttribute("crossorigin", "anonymous");
+  script.async = true;
+  document.getElementById("giscus-container")?.appendChild(script);
+</script>
+
+<!-- algolia搜索 -->
+<script is:inline src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<script is:inline>
+  docsearch({
+    appId: "P4AQ539NZY",
+    apiKey: "c3ea06dcb191ed32dffe808d302dd0fa",
+    indexName: "wj1994",
+    container: "#search-contaienr",
+    debug: false,
+  });
+</script>
