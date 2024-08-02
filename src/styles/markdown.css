@@ -115,6 +115,7 @@
   line-height: 1.5;
   word-wrap: break-word;
   color: var(--text-color);
+  word-break: break-all;
 }
 
 .markdown-body ol,
