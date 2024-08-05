@@ -1,18 +1,21 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import dayjs from "dayjs";
+import type { MarkdownHeading } from "astro";
 
+import Catalog from "./Catalog.astro";
 import BaseHead from "./BaseHead.astro";
 import Header from "./Header.astro";
-import Footer from "./Footer.astro";
 import BaseFooter from "./BaseFooter.astro";
 import { SITE_TITLE_SUFFIX } from "../consts";
 
 import "../styles/markdown.css";
 
-type Props = CollectionEntry<"blog">["data"];
+type Props = CollectionEntry<"blog">["data"] & {
+  headings: MarkdownHeading[];
+};
 
-const { title, description, pubDate } = Astro.props;
+const { title, description, pubDate, headings } = Astro.props;
 ---
 
 <html lang="zh-cn">
@@ -26,8 +29,8 @@ const { title, description, pubDate } = Astro.props;
     class="relative bg-white dark:bg-#1b1b1f max-w-full sm:max-w-567px md:max-w-750px xl:max-w-960px mx-auto"
   >
     <Header className="px-20px" />
-    <main class="mt-100px sm:px-20px max-w-700px mx-auto">
-      <article>
+    <main class="mt-100px sm:px-20px max-w-1057px mx-auto flex gap-x-64px">
+      <article class="felx-1">
         <div class="markdown-body">
           <h2 class="!mb-20px">{title}</h2>
           <div class="mb-50px text-#73737D opacity-90">
@@ -35,10 +38,14 @@ const { title, description, pubDate } = Astro.props;
           </div>
           <slot />
         </div>
+        <div
+          id="giscus-container"
+          class="giscus mt-100px px-20px sm:px-0 mb-100px"
+        >
+        </div>
       </article>
-      <div id="giscus-container" class="giscus mt-100px px-20px sm:px-0"></div>
+      <Catalog headings={headings} />
     </main>
-    <Footer />
     <BaseFooter />
   </body>
 </html>

@@ -1,0 +1,133 @@
+---
+import type { MarkdownHeading } from "astro";
+
+type Props = {
+  headings: MarkdownHeading[];
+};
+
+const { headings } = Astro.props;
+
+const min = headings.reduce((prev, next) => {
+  return prev > next.depth ? next.depth : prev;
+}, 6);
+// 只展示3级
+const links = headings.filter((heading) => heading.depth < min + 3);
+---
+
+<div class="w-224px shrink-0 md:block hidden">
+  <div class="sticky top-80px h-[calc(100vh-80px)] overflow-y-auto">
+    <ul
+      class="pl-16px border-l-1px border-#e2e2e3 dark:border-#3c3c43c7 text-#3c3c43c7 dark:text-white"
+    >
+      {
+        links.map((heading) => (
+          <li
+            class="text-sm catalog-item"
+            style={{ paddingLeft: `${heading.depth - min}rem` }}
+          >
+            <a class="leading-32px" href={`#${heading.slug}`}>
+              {heading.text}
+            </a>
+          </li>
+        ))
+      }
+      <li
+        class="mt-10px pt-10px border-t-1px border-#e2e2e3 dark:border-#3c3c43c7"
+      >
+        <a href="" id="go-to-top">go to top</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script is:inline>
+  const listDom = document.querySelectorAll(".catalog-item");
+
+  const { scrollTop } = document.documentElement;
+
+  console.log(scrollTop);
+  const { innerHeight } = window;
+  let lastScrollTop = document.scrollingElement.scrollTop;
+
+  const topBtn = document.getElementById("go-to-top");
+  topBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+
+  const targetsObserver = new IntersectionObserver((entries) => {
+    topBtn.parentElement.style.setProperty(
+      "display",
+      document.documentElement.scrollTop >= innerHeight * 1.5
+        ? "block"
+        : "none",
+    );
+
+    entries.reverse().forEach(({ target, isIntersecting, isActived }) => {
+      const link = document.querySelector(
+        `a[href="#${target.getAttribute("id")}"]`,
+      ).parentElement;
+      if (isIntersecting) {
+        listDom.forEach((li) => li.classList.remove("active"));
+        link.classList.add("active");
+      } else if (isActived) {
+      }
+    });
+
+    lastScrollTop = document.scrollingElement.scrollTop;
+  });
+
+  listDom.forEach((item) => {
+    const link = item.querySelector("a");
+    const dom = document.getElementById(link.getAttribute("href").slice(1));
+    // 点击滚动效果
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: dom.offsetTop - 100,
+        behavior: "smooth",
+      });
+    });
+
+    item.active = () => {
+      listDom.querySelectorAll(".active").forEach((item) => {
+        item.classList.remove("active");
+      });
+      item.classList.add("active");
+    };
+
+    item.unactive = () => {
+      if (document.scrollingElement.scrollTop > lastScrollTop) {
+        listDom[index + 1] && listDom[index + 1].active();
+      } else {
+        listDom[index - 1] && listDom[index - 1].active();
+      }
+      item.classList.remove("active");
+    };
+
+    // 监听对应的h标签
+    targetsObserver.observe(dom);
+  });
+</script>
+
+<style>
+  .active {
+    position: relative;
+  }
+
+  .active::before {
+    content: "";
+    position: absolute;
+    top: 7px;
+    left: -17px;
+    width: 2px;
+    height: 18px;
+    background-color: #3451b2;
+  }
+
+  .to-top {
+  }
+</style>
