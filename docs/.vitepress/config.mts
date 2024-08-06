@@ -12,7 +12,12 @@ export default defineConfig({
   themeConfig: {
     sidebar: await createSidebar(),
     search: {
-      provider: "local",
+      provider: "algolia",
+      options: {
+        appId: 'P4AQ539NZY',
+        apiKey: 'c3ea06dcb191ed32dffe808d302dd0fa',
+        indexName: 'wj1994'
+      }
     },
     socialLinks: [
       { icon: "github", link: "https://github.com/wjie1994/blogs" },
