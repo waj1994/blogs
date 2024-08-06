@@ -1,9 +1,11 @@
 ---
 groups: 其他
-title: 工具库
+title: 工具
 description: 记录日常开发，学习中遇到的好用的工具库的一些用法，方便后续遇到相同的需求有个参考
 outline: [2, 4]
 ---
+
+# {{$frontmatter.title}}
 
 ### 前端 ocr 识别
 

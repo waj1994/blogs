@@ -5,7 +5,7 @@ outline: [2, 4]
 description: http缓存的定义、分类、场景，以及使用nodejs模拟实现。
 ---
 
-# HTTP 缓存
+# {{$frontmatter.title}}
 
 [demo](https://github.com/wjie1994/test-demo/tree/master/http-cache)
 

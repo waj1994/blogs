@@ -4,10 +4,10 @@ import createSidebar from "./plugins/createSidebar.mts";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "小王说前端",
+  title: "Waj Blog",
   description:
-    "欢迎来到一个跟前端相关的博客。这里有js、vue、react、node等相关的知识点，还有常见的面识题，日常开发中遇到的一些比较难搞的问题等等；我们从基本使用，到底层原理，从方方面面带您领略前端的魅力。让我们一起加油，成为优秀的前端coder。",
-  titleTemplate: ":title - 小王说前端",
+    "欢迎开启一段轻松愉悦的前端之旅。这里有js、vue、react、node等相关的知识点，还有常见的面识题，日常开发中遇到的问题等等；我们从基本使用，到底层原理，从方方面面带您领略前端的魅力。让我们一起加油，成为优秀的前端coder。",
+  titleTemplate: ":title - Waj Blog",
   lang: "zh-CN",
   themeConfig: {
     sidebar: await createSidebar(),
@@ -23,7 +23,7 @@ export default defineConfig({
       "meta",
       { name: "msvalidate.01", content: "37DF9FCEF8FB058D63E35D0264ED92D8" },
     ],
-    ["meta", { name: "baidu-site-verification", content: "codeva-ASHqbDtWDW" }],
+    ["meta", { name: "baidu-site-verification", content: "codeva-7WLMk36AAG" }],
     [
       "script",
       {},
@@ -45,8 +45,8 @@ export default defineConfig({
     [
       "script",
       {
-        defer: 'defer',
-        src: '/_vercel/speed-insights/script.js'
+        defer: "defer",
+        src: "/_vercel/speed-insights/script.js",
       },
     ],
   ],

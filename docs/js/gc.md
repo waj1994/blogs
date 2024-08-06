@@ -1,9 +1,11 @@
 ---
 groups: js
-title: 垃圾回收
+title: 浏览器垃圾回收
 description: 记录js以前和现在的垃圾回收机制，以及v8引擎中垃圾回收机制的优化。
 outline: [2, 4]
 ---
+
+# {{$frontmatter.title}}
 
 ### 什么是垃圾回收
 
