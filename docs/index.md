@@ -32,9 +32,9 @@ const diff = dayjs().diff(dayjs('2019-08-01'), 'year')
 - ~~vue2 + express + mongodb + 云服务器~~
 - ~~react + koa + mongodb + 云服务器~~
 - ~~vuepress + Github Pages~~
-- ~~vitepress + Github Pages~~
+- ~~astro + vercel~~
 - ~~nextjs + vercel~~
-- astro + vercel
+- vitepress + vercel
 
 ### 联系我
 
