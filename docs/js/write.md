@@ -7,7 +7,7 @@ outline: [2, 4]
 
 # {{$frontmatter.title}}
 
-### call、apply
+## call、apply
 
 改变 this 执行并执行函数。
 
@@ -31,7 +31,7 @@ Function.prototype.myCall = function (content, ...arg) {
 };
 ```
 
-### bind
+## bind
 
 改变 this 返回函数。
 
@@ -78,7 +78,7 @@ const o = new f(28);
 console.log(o.type);
 ```
 
-### 深拷贝
+## 深拷贝
 
 思路：
 
@@ -133,7 +133,7 @@ function deepClone(target, map = new WeakMap()) {
 }
 ```
 
-### 柯里化
+## 柯里化
 
 柯里化：接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，
 并且返回接受余下的参数而且返回结果的新函数，参数传递完成后函数执行。
@@ -157,7 +157,7 @@ function currying(callback, ...arg) {
 }
 ```
 
-### 防抖
+## 防抖
 
 防抖：在某一高频触发事件时，直到某个时间段不触发才执行事件。
 
@@ -178,11 +178,11 @@ function debounce(fn, wait) {
 }
 ```
 
-### 节流-thorttle
+## 节流-thorttle
 
 节流：事件在某一时间段内只执行一次。
 
-#### 方法一：定时器
+### 方法一：定时器
 
 思路：利用闭包和定时器，在外层函数记录定时器 timer，内层函数判断是否定时器 timer
 的值是否存在，不存在设置定时器设置延后执行并清楚定时器。
@@ -203,7 +203,7 @@ function thorttle(fn, wait) {
 }
 ```
 
-#### 方法二：时间戳
+### 方法二：时间戳
 
 思路：利用时间差和闭包，外层函数记录上一次执行的时间，内存函数判断当前时间减去上
 一次的时间是否大于定义的时间，如果大于就执行函数并重新记录上一次的时间。
@@ -223,11 +223,11 @@ function thorttle(fn, wait) {
 }
 ```
 
-### 扁平化-flat
+## 扁平化-flat
 
 扁平化：多维数组打散为一维数组。
 
-#### 第一种方法--flat
+### 第一种方法--flat
 
 flat 方法参数为可选，表示需要递归的层级，即需要打散的数组层级，默认为 1，在不确
 定需要递归的层级时传入 Infinity 可递归全部。
@@ -236,7 +236,7 @@ flat 方法参数为可选，表示需要递归的层级，即需要打散的数
 [1, [2, [3]]].flat(Infinity); // [1, 2, 3]
 ```
 
-#### 第二种方法--转为字符串
+### 第二种方法--转为字符串
 
 利用数组 api(toString、join)将多维数组转为字符串。再讲字符串转为一维数组。注意使
 用场景，使用该方案如果是数值需要转换。
@@ -248,7 +248,7 @@ flat 方法参数为可选，表示需要递归的层级，即需要打散的数
   .map((item) => Number(item)); // [1, 2, 3]
 ```
 
-#### 第三种方法--遍历递归
+### 第三种方法--遍历递归
 
 遍历数组判断数组每一个元素是否是数组，如果是数组递归执行，如果不是数组放入返回结
 果中。常见的是使用 reduce 遍历。
@@ -261,7 +261,7 @@ function flat(arr) {
 }
 ```
 
-### instanceof
+## instanceof
 
 instanceof：用于检测构造函数的 prototype 属性是否出现在某个实例对象的原型链上。
 
@@ -283,7 +283,7 @@ function myInstanceof(instance, parent) {
 }
 ```
 
-### new
+## new
 
 思路：
 
@@ -305,9 +305,9 @@ function myNew(parent, ...arg) {
 }
 ```
 
-### a == 1 && a == 2 && a == 3
+## a == 1 && a == 2 && a == 3
 
-###### 隐式类型转换
+#### 隐式类型转换
 
     array/object在进行==判断时会进行类型转换，转换成基本类型比较。
 
@@ -369,7 +369,7 @@ a.join = function () {
 console.log(a == 1 && a == 2 && a == 3);
 ```
 
-###### 劫持代理
+#### 劫持代理
 
 思路：使用 Object.defineProperty 或者 Object.proxy。
 
@@ -395,7 +395,7 @@ const a = new Proxy(
 console.log(a == 1 && a == 2 && a == 3);
 ```
 
-###### with
+#### with
 
     注意： 实际开发中不要用with！！！
 

@@ -7,7 +7,7 @@ outline: [2, 4]
 
 # {{$frontmatter.title}}
 
-### 配置用户名和邮箱
+## 配置用户名和邮箱
 
 ```shell
 git config --global user.name 'XXX'
@@ -17,13 +17,13 @@ git config --global user.emall 'xxx@xx.com'
 # --system 系统所有用户
 ```
 
-### 查看配置的用户名密码
+## 查看配置的用户名密码
 
 ```shell
 git config --list --global
 ```
 
-### 初始化项目
+## 初始化项目
 
 ```shell
 # 已有项目
@@ -32,7 +32,7 @@ git init
 git init '项目名称'
 ```
 
-### 远程仓库
+## 远程仓库
 
 ```shell
 # 添加远程仓库
@@ -47,13 +47,13 @@ git remote set-url origin '远程仓库地址'
 git remote set-url --add origin '远程仓库地址'
 ```
 
-### 查看项目文件状态
+## 查看项目文件状态
 
 ```shell
 git status
 ```
 
-### 添加文件到暂存区
+## 添加文件到暂存区
 
 ```shell
 git add XXX XXX # 可以填写多个文件 或者文件夹
@@ -62,20 +62,20 @@ git add . # 将文件的修改，新增添加到暂存区
 git add -A # 将文件的修改，删除，新建添加到暂存区
 ```
 
-### 删除文件
+## 删除文件
 
 ```shell
 git rm XXX # 注意：本地项目也会删除
 ```
 
-### 暂存区合并到本地仓库
+## 暂存区合并到本地仓库
 
 ```shell
 git commit -m 'XXXX' # 需要填写日志
 git commit -am 'XXXX' # 工作区的内容直接合并到仓库（不推荐）
 ```
 
-### 查看日志
+## 查看日志
 
 ```shell
 git log # 查看所有日志
@@ -86,13 +86,13 @@ git log --graph # 图形化的
 # 可以组合使用
 ```
 
-### 变更文件名称
+## 变更文件名称
 
 ```shell
 git mv <原名称> <新名称> # 修改后需要commit
 ```
 
-### 分支
+## 分支
 
 ```shell
 git branch -v # 查看分支
@@ -102,7 +102,7 @@ git branch -D XXX # （强制）删除本地分支
 git push origin --delete dev20181018 # 删除远程分支
 ```
 
-### commit
+## commit
 
 ```shell
 git commit --amend  # 修改commit信息（vim用法）
@@ -112,7 +112,7 @@ git reset --mixed HEAD^ # 撤销最新的commit并恢复到工作区
 git reset --hard HEAD^ # 撤销最新的commit并放弃所有修改
 ```
 
-### tag
+## tag
 
 ```shell
 git tag <tagName> # 创建本地tag
@@ -125,7 +125,7 @@ git tag -d <tagName> # 删除本地tag
 git push origin :refs/tags/<tagName> # 删除远端tag
 ```
 
-### stash
+## stash
 
 `git stash`命令用于暂时保存没有提交的工作,即未 commit 的都会保存到 stash。
 

@@ -9,7 +9,7 @@ outline: [2, 4]
 
 官方地址： <https://rollupjs.org/guide/en/>
 
-### 创建项目
+## 创建项目
 
 ```shell
 mkdir project-app // 创建项目目录
@@ -17,13 +17,13 @@ cd project-app // 进入项目目录
 npm init -y // 初始化项目生成package.json文件
 ```
 
-### 安装 rollup
+## 安装 rollup
 
 ```shell
 npm i -D rollup
 ```
 
-### 打包初体验
+## 打包初体验
 
 项目根目录创建 src 文件夹存放项目源代码，在 src 新建 index.js 源码入口。
 
@@ -67,7 +67,7 @@ rollup -c config/rollup.config.js
 
 输入`npm run build`试试吧，方便很多吧。
 
-### 配置 babel
+## 配置 babel
 
 js 高阶语法转换成浏览器识别的低阶语法。
 
@@ -107,7 +107,7 @@ export default {
 
 `"modules": false`，不然 Babel 会在 Rollup 处理之前将模块转成 CommonJS，导致 Rollup 处理失败。
 
-### 配置 typescript
+## 配置 typescript
 
 现在 ts 这么火，我们当然也要支持 ts 才行啊。
 
@@ -129,7 +129,7 @@ export default {
 
 在根目录创建 ts 的配置文件 tsconfig.json 文件，我这里全局安装了 typescript 就使用`tsc --init`创建配置。具体配置项可参照[typescript 中文网](https://www.tslang.cn/)。
 
-### eslint
+## eslint
 
 一个好的代码习惯是程序员必备的技能。
 
@@ -139,7 +139,7 @@ npm i -D eslint
 
 命令行输入命令`npx eslint --init`根据自己的代码习惯配置 eslint。更多配置，规则见[eslint 中文网](https://eslint.bootcss.com/)。
 
-### 第三方依赖包
+## 第三方依赖包
 
 如果项目中需要依赖到第三方包，rollup 不像 webapck 直接引入就能使用，需要告诉 rollup 怎么处理。
 
@@ -161,7 +161,7 @@ export default {
 };
 ```
 
-### 环境区分
+## 环境区分
 
 不同环境有不同的配置，比如说生产环境需要压缩代码，开发环境需要开启 sourceMap 便于调试等等。
 
@@ -191,7 +191,7 @@ export default merge(baseConfig, {
 }
 ```
 
-### 压缩代码
+## 压缩代码
 
 推荐使用`rollup-plugin-terser`插件。
 
@@ -209,7 +209,7 @@ export default merge(baseConfig, {
 });
 ```
 
-### 本地服务及热更新
+## 本地服务及热更新
 
 ```shell
 npm i -D rollup-plugin-serve rollup-plugin-livereload
@@ -247,6 +247,6 @@ export default merge(baseConfig, {
 </html>
 ```
 
-### 结束
+## 结束
 
 嗯，就这样，后续再添加。

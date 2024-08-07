@@ -7,7 +7,7 @@ outline: [2, 4]
 
 # {{$frontmatter.title}}
 
-### 前端 ocr 识别
+## 前端 ocr 识别
 
 前端 orc 识别使用`tesseract.js`库。
 
