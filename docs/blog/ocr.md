@@ -1,13 +1,11 @@
 ---
-groups: 其他
-title: 工具
-description: 记录日常开发，学习中遇到的好用的工具库的一些用法，方便后续遇到相同的需求有个参考
+groups: js
+title: 前端ocr识别
+description: 前端怎么做证件照识别，图片文字提取？今天来使用tesseract.js库来实现前端ocr识别。
 outline: [2, 4]
 ---
 
 # {{$frontmatter.title}}
-
-## 前端 ocr 识别
 
 前端 orc 识别使用`tesseract.js`库。
 
