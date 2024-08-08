@@ -35,7 +35,7 @@ async function deepResolve(url: string) {
     if (excludeDir.includes(item)) {
       continue;
     }
-    const uri = `${url}/${item}`;
+    const uri = `${url}${item}`;
     const stat = await fs.stat(resolve(uri));
     // 文件夹
     if (stat.isDirectory()) {
@@ -46,20 +46,16 @@ async function deepResolve(url: string) {
     const obj = analysis(text);
     result.push({
       text: obj.data.title,
-      link: uri.replace(/\.\.\/\.\.\//g, "").split(".md")[0],
+      link: '/' + uri.replace(/\.\.\/\.\.\//g, "").split(".md")[0],
       groups: obj.data.groups,
     });
   }
   return result;
 }
 
-export default async (): Promise<DefaultTheme.Sidebar> => {
-  const flatArr = await deepResolve("../../");
-  const result: DefaultTheme.Sidebar = [
-    {
-      text: "",
-    },
-  ];
+const createSidebar = async (): Promise<DefaultTheme.SidebarItem[]> => {
+  const flatArr = await deepResolve("../../blog/");
+  const result: DefaultTheme.Sidebar = [];
   flatArr.forEach((item) => {
     const { text, link, groups } = item;
     const target = result.find((el) => el.text === groups);
@@ -79,3 +75,5 @@ export default async (): Promise<DefaultTheme.Sidebar> => {
   });
   return result;
 };
+
+export default await createSidebar()

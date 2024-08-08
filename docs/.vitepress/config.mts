@@ -1,6 +1,8 @@
 import { defineConfig } from "vitepress";
 
-import createSidebar from "./plugins/createSidebar.mts";
+import sidebar from "./plugins/createSidebar.mts";
+
+console.log(JSON.stringify(sidebar));
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -10,18 +12,57 @@ export default defineConfig({
   titleTemplate: ":title - Waj Blog",
   lang: "zh-CN",
   themeConfig: {
-    sidebar: await createSidebar(),
+    logo: "/logo.svg",
+    nav: [
+      { text: "博客", link: "/blog/cache", activeMatch: '/blog/' },
+      { text: "关于我", link: "/about/" },
+    ],
+    // ts-ignore
+    sidebar: {
+      "/blog/": sidebar,
+    },
     search: {
       provider: "algolia",
       options: {
-        appId: 'P4AQ539NZY',
-        apiKey: 'c3ea06dcb191ed32dffe808d302dd0fa',
-        indexName: 'wj1994'
-      }
+        appId: "P4AQ539NZY",
+        apiKey: "c3ea06dcb191ed32dffe808d302dd0fa",
+        indexName: "wj1994",
+      },
     },
     socialLinks: [
       { icon: "github", link: "https://github.com/wjie1994/blogs" },
+      {
+        icon: {
+          svg: `<svg width="25" heigh="25" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24">
+            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5l-8-5V6l8 5l8-5v2z" fill="currentColor"></path>
+          </svg>`,
+        },
+        link: "mailto:wjie2021@163.com",
+      },
     ],
+    docFooter: {
+      prev: "上一页",
+      next: "下一页",
+    },
+
+    outline: {
+      label: "页面导航",
+    },
+
+    lastUpdated: {
+      text: "最后更新于",
+      formatOptions: {
+        dateStyle: "short",
+        timeStyle: "medium",
+      },
+    },
+
+    returnToTopLabel: "回到顶部",
+    sidebarMenuLabel: "菜单",
+    darkModeSwitchLabel: "主题",
+    lightModeSwitchTitle: "切换到浅色模式",
+    darkModeSwitchTitle: "切换到深色模式",
   },
   head: [
     [
