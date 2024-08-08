@@ -2,8 +2,6 @@ import { defineConfig } from "vitepress";
 
 import sidebar from "./plugins/createSidebar.mts";
 
-console.log(JSON.stringify(sidebar));
-
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "Waj Blog",
@@ -14,7 +12,7 @@ export default defineConfig({
   themeConfig: {
     logo: "/logo.svg",
     nav: [
-      { text: "博客", link: "/blog/cache", activeMatch: '/blog/' },
+      { text: "博客", link: "/blog/cache", activeMatch: "/blog/" },
       { text: "关于我", link: "/about/" },
     ],
     // ts-ignore
@@ -70,6 +68,25 @@ export default defineConfig({
       { name: "msvalidate.01", content: "37DF9FCEF8FB058D63E35D0264ED92D8" },
     ],
     ["meta", { name: "baidu-site-verification", content: "codeva-7WLMk36AAG" }],
+    [
+      "meta",
+      {
+        name: "google-site-verification",
+        content: "XqbrlfoW12jwARjMPswv4GY9m9vTZ-a8utUFds5o3Co",
+      },
+    ],
+    ["meta", { name: "og:title", content: "Waj Blog" }],
+    ["meta", { name: "og:type", content: "website" }],
+    ["meta", { name: "og:url", content: "https://wj1994.cn" }],
+    [
+      "meta",
+      {
+        name: "og:description",
+        content:
+          "欢迎开启一段轻松愉悦的前端之旅。这里有js、vue、react、node等相关的知识点，还有常见的面识题，日常开发中遇到的问题等等；我们从基本使用，到底层原理，从方方面面带您领略前端的魅力。让我们一起加油，成为优秀的前端coder。",
+      },
+    ],
+    ["meta", { name: "og:image", content: "/image/js.jpg" }],
     [
       "script",
       {},
