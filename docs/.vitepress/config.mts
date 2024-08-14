@@ -68,11 +68,14 @@ export default defineConfig({
       { name: "msvalidate.01", content: "9D41D43776743EEA9312CE08774752B8" },
     ],
     ["meta", { name: "baidu-site-verification", content: "codeva-5bBM7Az3mp" }],
+
+// <meta name="google-site-verification" content="Qp6MuYYJvqPH7bFrnlQOiITOwD80iZ0x0BoYBehEUaQ" />
+
     [
       "meta",
       {
         name: "google-site-verification",
-        content: "Qp6MuYYJvqPH7bFrnlQOiITOwD80iZ0x0BoYBehEUaQ-a8utUFds5o3Co",
+        content: "Qp6MuYYJvqPH7bFrnlQOiITOwD80iZ0x0BoYBehEUaQ",
       },
     ],
     ["meta", { name: "og:title", content: "Waj Blog" }],
