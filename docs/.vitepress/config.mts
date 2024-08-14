@@ -65,14 +65,14 @@ export default defineConfig({
   head: [
     [
       "meta",
-      { name: "msvalidate.01", content: "37DF9FCEF8FB058D63E35D0264ED92D8" },
+      { name: "msvalidate.01", content: "9D41D43776743EEA9312CE08774752B8" },
     ],
-    ["meta", { name: "baidu-site-verification", content: "codeva-7WLMk36AAG" }],
+    ["meta", { name: "baidu-site-verification", content: "codeva-5bBM7Az3mp" }],
     [
       "meta",
       {
         name: "google-site-verification",
-        content: "XqbrlfoW12jwARjMPswv4GY9m9vTZ-a8utUFds5o3Co",
+        content: "Qp6MuYYJvqPH7bFrnlQOiITOwD80iZ0x0BoYBehEUaQ-a8utUFds5o3Co",
       },
     ],
     ["meta", { name: "og:title", content: "Waj Blog" }],
@@ -94,7 +94,7 @@ export default defineConfig({
         var _hmt = _hmt || [];
         (function() {
           var hm = document.createElement("script");
-          hm.src = "https://hm.baidu.com/hm.js?b3909b0f72d4074ce249a42928802554";
+          hm.src = "https://hm.baidu.com/hm.js?11023a824985cf7b4d35a0e8da1f6811";
           var s = document.getElementsByTagName("script")[0]; 
           s.parentNode.insertBefore(hm, s);
         })();
