@@ -77,7 +77,7 @@ export default defineConfig({
     ],
     ["meta", { name: "og:title", content: "Waj Blog" }],
     ["meta", { name: "og:type", content: "website" }],
-    ["meta", { name: "og:url", content: "https://wj1994.cn" }],
+    ["meta", { name: "og:url", content: "https://waj9.cn" }],
     [
       "meta",
       {
@@ -114,7 +114,7 @@ export default defineConfig({
     ],
   ],
   sitemap: {
-    hostname: "https://wj1994.cn",
+    hostname: "https://waj9.cn",
   },
   lastUpdated: true,
   markdown: {
