@@ -28,7 +28,7 @@ export default defineConfig({
       },
     },
     socialLinks: [
-      { icon: "github", link: "https://github.com/wjie1994/blogs" },
+      { icon: "github", link: "https://github.com/waj1994/blogs" },
       {
         icon: {
           svg: `<svg width="25" heigh="25" xmlns="http://www.w3.org/2000/svg"

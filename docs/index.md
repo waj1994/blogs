@@ -14,7 +14,7 @@ hero:
       link: /blog/cache
     - theme: alt
       text: View on GitHub
-      link: https://github.com/wjie1994/blogs
+      link: https://github.com/waj1994/blogs
 ---
 
 <style>  
