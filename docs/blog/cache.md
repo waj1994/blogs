@@ -2,7 +2,6 @@
 groups: 网络
 title: http缓存
 outline: [2, 4]
-description: http缓存的定义、分类、场景，以及使用nodejs模拟实现。
 ---
 
 # {{$frontmatter.title}}

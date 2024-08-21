@@ -1,7 +1,6 @@
 ---
 groups: js
 title: nuxtjs3安装失败解决方案
-description: 记录下nuxtjs3安装失败的解决方案
 ---
 
 # {{$frontmatter.title}}

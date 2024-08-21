@@ -1,7 +1,6 @@
 ---
 groups: js
 title: 前端ocr识别
-description: 前端怎么做证件照识别，图片文字提取？今天来使用tesseract.js库来实现前端ocr识别。
 outline: [2, 4]
 ---
 

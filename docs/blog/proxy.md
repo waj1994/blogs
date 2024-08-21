@@ -1,7 +1,6 @@
 ---
 groups: 网络
 title: 代理
-description: 什么是代理？什么是正向代理，什么是反向代理，代理有什么用？什么时候用代理？这篇文章带你详细了解代理相关知识。
 ---
 
 # {{$frontmatter.title}}

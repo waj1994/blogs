@@ -1,7 +1,6 @@
 ---
 groups: js
 title: localStorage监听
-description: 关于localStorage监听的问题。
 outline: [2, 4]
 ---
 

@@ -1,7 +1,6 @@
 ---
 groups: js
 title: 浏览器垃圾回收
-description: 记录js以前和现在的垃圾回收机制，以及v8引擎中垃圾回收机制的优化。
 outline: [2, 4]
 ---
 

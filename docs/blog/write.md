@@ -1,7 +1,6 @@
 ---
 groups: js
 title: 面试常见手写题
-description: 面试中经常遇到的手写题总结，包括防抖节流、改变this指向、柯里化、扁平化等等。
 outline: [2, 4]
 ---
 

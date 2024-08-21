@@ -1,7 +1,6 @@
 ---
 groups: vue
 title: 你不知道的vue
-description: vue3中一些不起眼的知识点，容易被忽略的知识点，对vue3文档的一个扫盲，包括响应式原理、多属性绑定、监听、计算属性等等；
 outline: [2, 3]
 ---
 
