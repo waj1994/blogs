@@ -1,15 +1,30 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  devtools: { enabled: true },
+  build: {
+    analyze: {
+      filename: "stats.html",
+    },
+  },
+  devtools: { enabled: false },
   ssr: true,
   modules: [
     '@nuxt/content',
-    '@nuxt/ui',
-    '@nuxt/image',
     '@nuxtjs/sitemap',
     '@nuxtjs/robots',
     '@nuxt/eslint',
+    '@nuxtjs/tailwindcss',
+    "@nuxt/icon",
   ],
+
+  icon: {
+    provider: 'server',
+    customCollections: [
+      {
+        prefix: 'icon',
+        dir: './assets/icons'
+      },
+    ],
+  },
 
   routeRules: {
     '/': { prerender: true },

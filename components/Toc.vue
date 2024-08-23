@@ -76,6 +76,7 @@ onMounted(() => {
       y: target.getBoundingClientRect().y + scrollTop,
     })
   })
+  handleScroll()
   window.addEventListener('scroll', handleScroll)
 })
 onUnmounted(() => {
