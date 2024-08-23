@@ -52,8 +52,8 @@ const active = ref('')
  */
 const handleScroll = debounce(() => {
   const { scrollTop } = document.documentElement
-  const current = elements.value.find(item => item.y >= scrollTop)!
-  active.value = current.id
+  const current = elements.value.find(item => item.y >= scrollTop)
+  active.value = current?.id || ''
 }, 100)
 
 onMounted(() => {
