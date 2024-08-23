@@ -75,7 +75,7 @@ onMounted(() => {
 
 <template>
   <Header />
-  <main class="min-h-[calc(100vh-var(--header-height))]">
+  <main class="min-h-[calc(100vh-var(--header-height))] mr-[calc(100vw-100%)]">
     <NuxtPage />
   </main>
   <SpeedInsights />
@@ -90,12 +90,13 @@ onMounted(() => {
 
 html {
   scroll-behavior: smooth;
+  /** 解决滚动条挤压页面的问题  */
+  scrollbar-gutter: stable;
 }
 
 body {
   --header-height: 64px;
-
-  @apply bg-white dark:bg-gray-950 leading-[1.75] absolute w-screen overflow-x-hidden;
+  @apply bg-white dark:bg-gray-950 leading-[1.75];
 }
 
 .anchor {
