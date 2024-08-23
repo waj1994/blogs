@@ -88,10 +88,22 @@ onMounted(() => {
   transition: all 0.01s linear;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   --header-height: 64px;
 
   @apply bg-white dark:bg-gray-950 leading-[1.75] absolute w-screen overflow-x-hidden;
+}
+
+.anchor {
+  position: relative;
+  top: -96px; // 偏移值
+  display: block;
+  height: 0;
+  overflow: hidden;
 }
 
 .DocSearch-Button {
