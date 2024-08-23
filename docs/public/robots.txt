@@ -1,3 +1,0 @@
-Sitemap: https://waj9.cn/sitemap.xml
-
-User-agent: *

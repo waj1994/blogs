@@ -1,0 +1,89 @@
+.markdown-body {
+  @apply text-gray-700 dark:text-gray-300;
+
+  blockquote,
+  dd,
+  dl,
+  figure,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  hr,
+  p,
+  pre {
+    margin: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-bold text-gray-900 dark:text-white mb-4 mt-8;
+  }
+
+  h1 {
+    @apply text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white tracking-tight mt-0 pb-8;
+  }
+
+  h2 {
+    @apply text-2xl pt-6 border-t border-gray-200 dark:border-gray-800;
+    scroll-margin-top: calc(48px + 48px + var(--header-height));
+
+    @media (min-width: 1024px) {
+      scroll-margin-top: calc(48px + var(--header-height));
+    }
+  }
+
+  h3 {
+    @apply text-xl;
+    scroll-margin-top: calc(48px + 32px + var(--header-height));
+
+    @media (min-width: 1024px) {
+      scroll-margin-top: calc(32px + var(--header-height));
+    }
+  }
+
+  p {
+    @apply my-5;
+  }
+
+  ul {
+    @apply list-disc my-5 pl-7;
+  }
+
+  li {
+    @apply pl-[.375em] my-2;
+  }
+
+  pre {
+    @apply my-5 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-md text-sm  leading-relaxed overflow-x-auto px-5 py-3 whitespace-pre-wrap;
+    word-break: break-word;
+
+    span {
+      white-space: pre;
+    }
+  }
+
+  .tip {
+    @apply block pl-4 pr-6 py-3 rounded-md border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-700 dark:text-gray-300 text-sm/6 my-5 last:mb-0 relative prose-code:bg-white dark:prose-code:bg-gray-900 font-medium;
+  }
+
+  img {
+    @apply w-full;
+  }
+
+  p,
+  li,
+  code {
+    a {
+      @apply border-0 font-medium text-primary;
+
+      &:hover {
+        @apply border-b border-current;
+      }
+    }
+  }
+}
