@@ -20,7 +20,7 @@ const tree = computed(() => {
 
 <template>
   <div class="relative">
-    <ul class="mb-3 lg:mb-6 -mx-1 lg:mx-0">
+    <div class="mb-3 lg:mb-6 -mx-1 lg:mx-0">
       <NuxtLink
         v-for="item in navigation"
         :key="item._path"
@@ -30,7 +30,7 @@ const tree = computed(() => {
       >
         {{ item.title }}
       </NuxtLink>
-    </ul>
+    </div>
     <div class="flex items-center align-center text-center w-full flex-row mb-6">
       <div class="flex border-gray-200 dark:border-gray-800 w-full border-t border-dashed" />
     </div>

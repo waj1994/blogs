@@ -1,4 +1,7 @@
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+>
 import { SpeedInsights } from '@vercel/speed-insights/vue'
 
 useHead({
@@ -28,7 +31,6 @@ useHead({
   ],
   script: [
     {
-      async: true,
       src: 'https://cdn.jsdelivr.net/npm/@docsearch/js@3',
     },
   ],
