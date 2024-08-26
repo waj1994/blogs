@@ -11,7 +11,8 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
     '@nuxtjs/robots',
     '@nuxt/eslint',
-    '@nuxt/ui',
+    '@nuxt/icon',
+    '@nuxtjs/tailwindcss'
   ],
 
   icon: {

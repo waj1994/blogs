@@ -5,9 +5,7 @@ export default <Partial<Config>>{
   theme: {
     extend: {
       colors: {
-        primary: {
-          default: '#00C16A',
-        },
+        primary: '#00C16A',
       },
       fontFamily: {
         sans: [

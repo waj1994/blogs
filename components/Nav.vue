@@ -51,22 +51,21 @@ const tree = computed(() => {
           class="ms-auto flex-shrink-0 mr-1.5 w-5 h-5 text-gray-700 dark:text-gray-200"
         />
       </div>
-      <UVerticalNavigation
-        :links="item.children?.map(item => ({
-          to: item._path,
-          label: item.title,
-        }))"
-        :ui="{
-          wrapper: 'border-s border-gray-200 dark:border-gray-800 my-2.5 text-sm ml-2.5',
-          base: 'group block border-s -ms-px leading-6 before:hidden text-left outline-none mt-1.5',
-          padding: 'p-0 ps-4',
-          rounded: '',
-          font: '',
-          ring: '',
-          active: 'text-primary-500 dark:text-primary-400 border-current font-semibold',
-          inactive: 'border-transparent hover:border-gray-400 dark:hover:border-gray-500 text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300',
-        }"
-      />
+      <ul class="border-s border-gray-200 dark:border-gray-800 my-2.5 text-sm ml-2.5">
+        <li
+          v-for="el in item.children"
+          :key="el._path"
+          class="group block border-s -ms-px leading-6 before:hidden mt-1.5 pl-4 relative"
+        >
+          <NuxtLink
+            :to="el._path"
+            class="truncate text-gray-700 group-hover:text-gray-900 dark:text-gray-400 group-dark:hover:text-gray-300 before:w-0 before:h-full before:bg-gray-400 before:absolute before:top-0 before:-left-px group-hover:before:w-px"
+            active-class="!text-primary font-semibold"
+          >
+            {{ el.title }}
+          </NuxtLink>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -74,4 +73,10 @@ const tree = computed(() => {
 <style
   lang="less"
   scoped
-></style>
+>
+.router-link-exact-active {
+  &::before {
+    @apply w-px bg-primary;
+  }
+}
+</style>
