@@ -22,7 +22,7 @@ const { toc } = useContent() as {
 }
 
 function fall(arr: TocItem[]) {
-  if (!arr.length) {
+  if (!arr?.length) {
     return []
   }
   const res: TocItem[] = []
@@ -37,7 +37,7 @@ function fall(arr: TocItem[]) {
 /**
  * 目录列表
  */
-const tocList = fall(toc.value.links)
+const tocList = fall(toc.value?.links)
 /**
  * 锚点元素
  */
@@ -57,12 +57,15 @@ const handleScroll = debounce(() => {
 }, 100)
 
 onMounted(() => {
-  if (!toc.value.links.length) {
+  if (!toc.value?.links?.length) {
     return
   }
   const { scrollTop } = document.documentElement
   tocList.forEach((el) => {
-    const target = document.getElementById(el.id)!
+    const target = document.getElementById(el.id)
+    if (!target) {
+      return
+    }
     /**
      * 创建一个空标签  并偏移位置  使得锚点跳转到想要的位置  不然是跳转到顶部被遮挡
      */
@@ -73,7 +76,7 @@ onMounted(() => {
     elements.value.push({
       el: target,
       ...el,
-      y: target.getBoundingClientRect().y + scrollTop,
+      y: target?.getBoundingClientRect().y + scrollTop,
     })
   })
   handleScroll()
@@ -96,7 +99,7 @@ const handleClick = (item: TocItem, event: Event) => {
 </script>
 
 <template>
-  <nav v-if="toc.links.length">
+  <nav v-if="toc?.links.length">
     <div
       class="py-3 lg:py-8 border-b border-dashed border-gray-200 dark:border-gray-800 lg:border-0 space-y-3"
     >

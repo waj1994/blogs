@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  ssr: true,
   build: {
     analyze: {
       filename: 'stats.html',
@@ -13,7 +14,7 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/icon',
     '@nuxtjs/tailwindcss',
-    "@nuxt/image",
+    '@nuxt/image',
   ],
 
   icon: {
