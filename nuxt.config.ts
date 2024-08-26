@@ -33,7 +33,7 @@ export default defineNuxtConfig({
 
   sitemap: {
     exclude: ['/detail'],
-    xsl: false
+    xsl: false,
   },
 
   compatibilityDate: '2024-08-14',

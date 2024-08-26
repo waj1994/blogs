@@ -6,7 +6,7 @@ export default <Partial<Config>>{
     extend: {
       colors: {
         primary: {
-          default: '#00C16A'
+          default: '#00C16A',
         },
       },
       fontFamily: {
