@@ -1,11 +1,13 @@
-import { type Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss'
 
 export default <Partial<Config>>{
   darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        primary: '#00C16A',
+        primary: {
+          default: '#00C16A'
+        },
       },
       fontFamily: {
         sans: [

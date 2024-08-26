@@ -1,13 +1,6 @@
 <script setup lang="ts">
 import { SpeedInsights } from '@vercel/speed-insights/vue'
 
-const { data: navigation } = await useAsyncData('navigation', () =>
-  fetchContentNavigation(),
-)
-
-const menu = useMenu()
-menu.value = navigation.value
-
 useHead({
   link: [
     {
@@ -35,6 +28,7 @@ useHead({
   ],
   script: [
     {
+      async: true,
       src: 'https://cdn.jsdelivr.net/npm/@docsearch/js@3',
     },
   ],
@@ -44,6 +38,7 @@ onMounted(() => {
   useHead({
     script: [
       {
+        async: true,
         innerHTML: `
           docsearch({
             appId: "EAFR0MP54B",
@@ -55,6 +50,7 @@ onMounted(() => {
         `,
       },
       {
+        async: true,
         innerHTML: `
           var _hmt = _hmt || [];
           (function() {
@@ -66,6 +62,7 @@ onMounted(() => {
         `,
       },
       {
+        async: true,
         innerHTML: `window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };`,
       },
     ],
@@ -78,6 +75,7 @@ onMounted(() => {
   <main class="min-h-[calc(100vh-var(--header-height))] mr-[calc(100vw-100%)]">
     <NuxtPage />
   </main>
+  <MobileNav />
   <SpeedInsights />
 </template>
 

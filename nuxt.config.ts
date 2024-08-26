@@ -5,23 +5,13 @@ export default defineNuxtConfig({
       filename: 'stats.html',
     },
   },
-  nitro: {
-    prerender: {
-      // enabled by default with nuxt generate, not required
-      crawlLinks: true,
-      // add any routes to prerender
-      routes: ['/']
-    }
-  },
   devtools: { enabled: false },
-  ssr: true,
   modules: [
     '@nuxt/content',
     '@nuxtjs/sitemap',
     '@nuxtjs/robots',
     '@nuxt/eslint',
-    '@nuxtjs/tailwindcss',
-    '@nuxt/icon',
+    '@nuxt/ui',
   ],
 
   icon: {
@@ -34,10 +24,6 @@ export default defineNuxtConfig({
     ],
   },
 
-  routeRules: {
-    '/': { prerender: true },
-  },
-
   site: {
     url: 'https://waj9.cn',
     name: 'waj blog',
@@ -47,6 +33,7 @@ export default defineNuxtConfig({
 
   sitemap: {
     exclude: ['/detail'],
+    xsl: false
   },
 
   compatibilityDate: '2024-08-14',
@@ -77,9 +64,6 @@ export default defineNuxtConfig({
         'shell',
         'javascript',
       ],
-    },
-    navigation: {
-      fields: ['icon'],
     },
   },
 
