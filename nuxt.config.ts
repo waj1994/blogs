@@ -2,8 +2,16 @@
 export default defineNuxtConfig({
   build: {
     analyze: {
-      filename: "stats.html",
+      filename: 'stats.html',
     },
+  },
+  nitro: {
+    prerender: {
+      // enabled by default with nuxt generate, not required
+      crawlLinks: true,
+      // add any routes to prerender
+      routes: ['/']
+    }
   },
   devtools: { enabled: false },
   ssr: true,
@@ -13,7 +21,7 @@ export default defineNuxtConfig({
     '@nuxtjs/robots',
     '@nuxt/eslint',
     '@nuxtjs/tailwindcss',
-    "@nuxt/icon",
+    '@nuxt/icon',
   ],
 
   icon: {
@@ -21,7 +29,7 @@ export default defineNuxtConfig({
     customCollections: [
       {
         prefix: 'icon',
-        dir: './assets/icons'
+        dir: './assets/icons',
       },
     ],
   },
