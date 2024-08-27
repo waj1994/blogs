@@ -43,7 +43,7 @@ export default defineNuxtConfig({
   sitemap: {
     exclude: ['/detail'],
     xsl: false,
-    autoLastmod: true
+    autoLastmod: true,
   },
 
   compatibilityDate: '2024-08-14',
