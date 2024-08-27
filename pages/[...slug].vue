@@ -2,6 +2,9 @@
   setup
   lang="ts"
 >
+useSeoMeta({
+  articleModifiedTime: new Date().toISOString(),
+})
 </script>
 
 <template>
