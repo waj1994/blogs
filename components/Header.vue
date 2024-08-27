@@ -54,14 +54,14 @@ const showMenu = useShowMenu()
           @click="showMenu = !showMenu"
         >
           <Icon
-            v-if="!showMenu"
+            v-show="!showMenu"
             name="icon:menu"
             class="text-2xl"
           />
           <Icon
-            v-else
+            v-show="showMenu"
             name="icon:close"
-            class="text-2xl"
+            class="text-2xl dark:text-white"
           />
         </a>
       </div>

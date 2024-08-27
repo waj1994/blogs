@@ -116,4 +116,8 @@ body {
 .dark .DocSearch-Button {
   background-color: #161618;
 }
+
+.iconify {
+  @apply dark:text-white;
+}
 </style>
