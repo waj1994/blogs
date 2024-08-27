@@ -6,6 +6,12 @@ export default defineNuxtConfig({
       filename: 'stats.html',
     },
   },
+  nitro: {
+    static: true,
+    prerender: {
+      routes: ['/sitemap.xml', '/robots.txt'],
+    },
+  },
   devtools: { enabled: false },
   modules: [
     '@nuxt/content',
@@ -37,6 +43,7 @@ export default defineNuxtConfig({
   sitemap: {
     exclude: ['/detail'],
     xsl: false,
+    autoLastmod: true
   },
 
   compatibilityDate: '2024-08-14',
