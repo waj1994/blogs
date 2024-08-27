@@ -1,17 +1,15 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  ssr: true,
+  
   build: {
     analyze: {
       filename: 'stats.html',
     },
   },
-  nitro: {
-    static: true,
-    prerender: {
-      routes: ['/sitemap.xml', '/robots.txt'],
-    },
-  },
+
   devtools: { enabled: false },
+
   modules: [
     '@nuxt/content',
     '@nuxtjs/sitemap',
