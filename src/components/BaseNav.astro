@@ -64,6 +64,9 @@ const subMenu = tree.find((item) => item.key === type)?.children || []
             <ul class="border-s border-gray-200 dark:border-gray-800 my-2.5 text-sm ml-2.5">
               {item.children.map((el) => (
                 <li class="group -ms-px leading-6 before:hidden mt-1.5 pl-4 relative">
+                  {el.path}
+                  <br />
+                  {pathname}
                   <NavLink
                     href={el.path}
                     isActive={el.path === pathname}
