@@ -1,7 +1,5 @@
 ---
 title: 你不知道的vue
-description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Jul 08 2022'
 ---
 
 

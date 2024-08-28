@@ -1,7 +1,5 @@
 ---
 title: rollup入门
-description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Jul 08 2022'
 ---
 
 

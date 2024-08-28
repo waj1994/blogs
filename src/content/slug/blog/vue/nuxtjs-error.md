@@ -1,7 +1,5 @@
 ---
 title: nuxtjs3安装失败解决方案
-description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Jul 08 2022'
 ---
 
 

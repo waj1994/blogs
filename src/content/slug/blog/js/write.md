@@ -1,7 +1,5 @@
 ---
 title: 面试常见手写题
-description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Jul 08 2022'
 ---
 
 
