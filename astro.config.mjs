@@ -8,4 +8,7 @@ import icon from "astro-icon";
 export default defineConfig({
   site: "https://example.com",
   integrations: [mdx(), sitemap(), tailwind(), icon()],
+  prefetch: {
+    defaultStrategy: 'load'
+  }
 });

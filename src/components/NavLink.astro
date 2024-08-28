@@ -11,6 +11,7 @@ const { href, class: className, activeClass, isActive, ...props } = Astro.props
 
 <a
   href={href}
+  data-astro-prefetch
   class:list={[className, isActive ? activeClass : null]}
   {...props}
 >

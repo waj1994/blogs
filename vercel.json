@@ -1,6 +1,19 @@
 {
   "headers": [
     {
+      "source": "/(.*).html",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        },
+        {
+          "key": "ETag",
+          "value": "W/\"etag-value\"" 
+        }
+      ]
+    },
+    {
       "source": "/image/(.*)",
       "headers": [
         {
@@ -10,7 +23,7 @@
       ]
     },
     {
-      "source": "/js/(.*)",
+      "source": "/(.*).js",
       "headers": [
         {
           "key": "Cache-Control",
@@ -19,7 +32,7 @@
       ]
     },
     {
-      "source": "/_astro/(.*)",
+      "source": "/(.*).css",
       "headers": [
         {
           "key": "Cache-Control",
