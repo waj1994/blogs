@@ -6,8 +6,15 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://example.com",
-  integrations: [mdx(), sitemap(), tailwind(), icon()],
+  site: "https://waj9.cn",
+  integrations: [
+    mdx(),
+    sitemap({
+      lastmod: new Date().toISOString()
+    }),
+    tailwind(),
+    icon()
+  ],
   prefetch: {
     defaultStrategy: 'load'
   }
