@@ -1,6 +1,8 @@
 ---
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
+import SpeedInsights from '@vercel/speed-insights/astro';
+
 import '../styles/global.less'
 
 interface Props {
@@ -133,3 +135,5 @@ const { title, description } = Astro.props
       ;(window.siq = window.siq || []).push(arguments)
     }
 </script>
+
+<SpeedInsights />
