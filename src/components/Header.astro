@@ -1,134 +1,79 @@
 ---
-import SpeedInsights from "@vercel/speed-insights/astro";
-import { Icon } from "astro-icon/components";
+import { SITE_TITLE } from '../consts'
+import { Icon } from 'astro-icon/components'
 
-import { SITE_TITLE } from "../consts";
-
-const { className = "" } = Astro.props;
+import ThemeToggle from './ThemeToggle.astro'
 ---
 
-<div class={`w-full flex pt-[66px] ${className}`}>
-  <div class="w-full flex justify-between">
-    <h1 class="leading-[60px]">
+<header
+  class="bg-white/75 dark:bg-gray-950/75 backdrop-blur border-b border-gray-200 dark:border-gray-800 -mb-px sticky top-0 z-50 lg:mb-0 lg:border-0 mr-[calc(100vw-100%)] text-2xl dark:text-gray-300"
+>
+  <div
+    class="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl flex items-center justify-between gap-3 h-[var(--header-height)]"
+  >
+    <div class="flex flex-1 items-center gap-x-20">
       <a
-        class="flex items-center text-16px sm:text-[20px] font-600 text-black dark:text-white"
         href="/"
+        class="flex items-center gap-x-[10px]"
+        active-class="text-black dark:text-white"
       >
         <Icon
           name="logo"
-          class="mr-15px sm:mr-20px text-red text-30px sm:text-40px"
+          class="text-green-500 text-3xl"
         />
-        {SITE_TITLE}
+        <span class="text-8 font-bold">{SITE_TITLE}</span>
       </a>
-    </h1>
+    </div>
+    <div class="flex flex-1 justify-end items-center gap-x-4">
+      <div id="search-container"></div>
+      <a
+        href="https://github.com/waj1994/blogs"
+        target="_blank"
+        class="flex items-center"
+      >
+        <Icon name="github" />
+      </a>
+      <a
+        href="mailto:waj2024@126.com"
+        class="flex items-center"
+      >
+        <Icon name="email" />
+      </a>
+      <ThemeToggle />
+      <a
+        href="javascript:void(0)"
+        class="lg:hidden flex items-center"
+      >
+        <Icon
+          id="menu-open"
+          name="menu"
+        />
+        <Icon
+          id="menu-close"
+          name="close"
+          class="hidden"
+        />
+      </a>
+    </div>
   </div>
-  <div
-    class="flex items-center gap-x-15px sm:gap-x-20px text-20px sm:text-24px"
-  >
-    <div id="search-contaienr"></div>
-    <a class="icon-btn" href="mailto:wjie2021@163.com">
-      <Icon name="email" />
-    </a>
-    <a
-      class="icon-btn"
-      href="https://github.com/wjie1994/blogs"
-      target="_blank"
-    >
-      <Icon name="github" />
-    </a>
-    <button id="theme-toggle" class="icon-btn">
-      <Icon id="theme-moon" name="moon" />
-      <Icon id="theme-sun" name="sun" />
-    </button>
-  </div>
-</div>
+</header>
 
-<SpeedInsights />
+<script type="module">
+  const menuOpenBtn = document.querySelector('#menu-open')
+  const menuCloseBtn = document.querySelector('#menu-close')
+  const menuContainer = document.querySelector('#mobile-nav')
 
-<script is:inline>
-  const storageKey = "blog-theme";
+  menuOpenBtn.addEventListener('click', () => {
+    menuOpenBtn.classList.add('hidden')
+    menuCloseBtn.classList.remove('hidden')
+    menuContainer.classList.add('!w-full')
+    document.documentElement.classList.add('overflow-hidden')
+  })
 
-  /**
-   * isDark: true -> dark, false -> light
-   */
-  function isDarkStr(dark) {
-    return dark ? "dark" : "light";
-  }
-  /**
-   * 修改giscus设置
-   */
-  function changeGiscus(message) {
-    const iframe = document.querySelector("iframe.giscus-frame");
-    if (!iframe || !iframe.contentWindow) return;
-    iframe.contentWindow.postMessage({ giscus: message }, "https://giscus.app");
-  }
-
-  /**
-   * 获取系统主题
-   */
-  function getSystemTheme() {
-    return isDarkStr(window.matchMedia("(prefers-color-scheme: dark)").matches);
-  }
-
-  /**
-   * 获取主题
-   */
-  function getCacheTheme() {
-    return localStorage.getItem(storageKey) || getSystemTheme();
-  }
-
-  /**
-   * 修改主题
-   */
-  function changeBtn(theme) {
-    if (theme === "light") {
-      document.querySelector("#theme-sun")?.classList.add("hidden");
-      document.querySelector("#theme-moon")?.classList.remove("hidden");
-    } else {
-      document.querySelector("#theme-sun")?.classList.remove("hidden");
-      document.querySelector("#theme-moon")?.classList.add("hidden");
-    }
-    document.documentElement.setAttribute("class", theme);
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem(storageKey, theme);
-    changeGiscus({
-      setConfig: {
-        theme,
-      },
-    });
-  }
-
-  /**
-   * 初始化
-   */
-  function first() {
-    const theme = getCacheTheme();
-    changeBtn(theme);
-  }
-  first();
-
-  /**
-   * 按钮切换主题
-   */
-  function handleTheme() {
-    const theme = document.documentElement.getAttribute("class");
-    const newTheme = isDarkStr(!(theme === "dark"));
-    changeBtn(newTheme);
-  }
-  document
-    .querySelector("#theme-toggle")
-    ?.addEventListener("click", handleTheme);
-
-  // 监听系统主题变化
-  window
-    .matchMedia("(prefers-color-scheme: dark)")
-    .addEventListener("change", ({ matches }) => {
-      changeBtn(isDarkStr(matches));
-    });
-
-  // 监听localStorage变化
-  // 注意：该方法只有在其他标签修改才会触发
-  window.addEventListener("storage", ({ key, newValue }) => {
-    key === storageKey && changeBtn(newValue);
-  });
+  menuCloseBtn.addEventListener('click', () => {
+    menuOpenBtn.classList.remove('hidden')
+    menuCloseBtn.classList.add('hidden')
+    menuContainer.classList.remove('!w-full')
+    document.documentElement.classList.remove('overflow-hidden')
+  })
 </script>

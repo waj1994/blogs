@@ -1,0 +1,103 @@
+---
+import { getCollection } from 'astro:content'
+import { Icon } from 'astro-icon/components'
+
+import { getMenuTree } from '../lib/utils'
+import NavLink from './NavLink.astro'
+
+const { pathname } = Astro.url
+const type = pathname.match(/[^\/]+/g)?.[0] || ''
+
+async function getMenu() {
+  const posts = await getCollection('slug')
+  return posts.map((item) => ({
+    title: item.data.title,
+    path: `/${item.slug}`,
+    group: item.slug.split('/'),
+  }))
+}
+
+const menu = await getMenu()
+
+const tree = getMenuTree(menu)
+const subMenu = tree.find((item) => item.key === type)?.children || []
+---
+
+<!-- 基本导航栏 -->
+<div class="relative">
+  <div class="mb-3 lg:mb-6 -mx-1 lg:mx-0 flex flex-col">
+    {
+      tree.map((item) => (
+        <NavLink
+          href={
+            item?.children?.[0].children?.[0].path ||
+            item?.children?.[0].path ||
+            item.path
+          }
+          isActive={type === item.key}
+          class="mt-2.5 first:mt-0 text-gray-500 dark:text-gray-300 flex items-center gap-1.5 group text-sm/6 truncate"
+          activeClass="font-semibold !text-primary"
+        >
+          {item.key}
+        </NavLink>
+      ))
+    }
+  </div>
+  <div class="flex items-center align-center text-center w-full flex-row mb-6">
+    <div
+      class="flex border-gray-200 dark:border-gray-800 w-full border-t border-dashed"
+    >
+    </div>
+  </div>
+  {
+    subMenu.map((item) => {
+      if (item.children) {
+        return (
+          <div class="w-full flex flex-col my-2.5 text-gray-700 dark:text-gray-200">
+            <div class="flex items-center gap-1.5 text-sm/6 font-semibold">
+              <span class="truncate">{item.key}</span>
+              <Icon
+                name="arrow-down"
+                class="ms-auto flex-shrink-0 mr-1.5 w-5 h-5"
+              />
+            </div>
+            <ul class="border-s border-gray-200 dark:border-gray-800 my-2.5 text-sm ml-2.5">
+              {item.children.map((el) => (
+                <li class="group -ms-px leading-6 before:hidden mt-1.5 pl-4 relative">
+                  <NavLink
+                    href={el.path}
+                    isActive={el.path === pathname}
+                    class="nav-item group-hover:text-gray-900 group-dark:hover:text-gray-300 group-hover:before:w-px"
+                    activeClass="active-nev"
+                  >
+                    {el.title}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
+      return (
+        <NavLink
+          href={item.path}
+          isActive={pathname === item.path}
+          class="nav-item group-hover:text-gray-900 group-dark:hover:text-gray-300 group-hover:before:w-px"
+          activeClass="active-nev"
+        >
+          {item.title}
+        </NavLink>
+      )
+    })
+  }
+</div>
+
+<style>
+  .nav-item {
+    @apply block w-full truncate text-gray-700  dark:text-gray-400  before:w-0 before:h-full before:bg-gray-400 before:absolute before:top-0 before:-left-px;
+  }
+
+  .active-nev {
+    @apply !text-primary before:w-px font-semibold before:bg-current;
+  }
+</style>

@@ -1,0 +1,115 @@
+---
+import type { MarkdownHeading } from 'astro'
+
+type Props = {
+  headings: MarkdownHeading[]
+}
+
+const { headings } = Astro.props
+
+const min = headings.reduce((prev, next) => {
+  return prev > next.depth ? next.depth : prev
+}, 6)
+// 只展示3级
+const links = headings.filter((heading) => heading.depth < min + 2)
+---
+
+<ul
+  class={`pl-4 py-4 text-gray-700 dark:text-white ${links.length <= 1 ? 'hidden' : ''}`}
+>
+  <div class="font-semibold">页面导航</div>
+  {
+    links.map((heading) => (
+      <li
+        class="text-sm toc-item mt-3"
+        style={{ paddingLeft: `${heading.depth - min}rem` }}
+      >
+        <a
+          class="leading-32px"
+          href={`#${heading.slug}`}
+        >
+          {heading.text}
+        </a>
+      </li>
+    ))
+  }
+  <li class="mt-3 pt-3 border-t border-gray-200 dark:border-gray-600">
+    <a
+      href=""
+      id="go-to-top"
+    >
+      go to top
+    </a>
+  </li>
+</ul>
+
+<script type="module">
+  import throttle from '/js/throttle.js'
+
+  const toclistDom = document.querySelectorAll('.toc-item')
+  if (Array.from(toclistDom).length) {
+    const targetList = []
+
+    const { scrollTop } = document.documentElement
+
+    const topBtn = document.getElementById('go-to-top')
+    topBtn.addEventListener('click', (e) => {
+      e.preventDefault()
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      })
+    })
+
+    toclistDom.forEach((item) => {
+      const link = item.querySelector('a')
+      const el = document.getElementById(link.getAttribute('href').slice(1))
+      // 点击滚动效果
+      link.addEventListener('click', (e) => {
+        e.preventDefault()
+        window.scrollTo({
+          top: el.offsetTop - 100,
+          behavior: 'smooth',
+        })
+      })
+      targetList.push({
+        el,
+        link,
+        y: el.getBoundingClientRect().y + scrollTop,
+      })
+    })
+
+    const scroll = throttle(() => {
+      const { innerHeight } = window
+      const { scrollTop } = document.documentElement
+      const show = scrollTop >= innerHeight * 1.5
+      if (show) {
+        topBtn.parentNode.classList.remove('hidden')
+      }
+      if (!show) {
+        topBtn.parentNode.classList.add('hidden')
+      }
+
+      const current = targetList.find((item) => item.y >= scrollTop)
+      if (current) {
+        targetList.forEach((item) =>
+          item.link.parentNode.classList.remove('active')
+        )
+        current.link.parentNode.classList.add('active')
+      }
+    }, 200)
+
+    scroll()
+    window.addEventListener('scroll', scroll)
+
+    window.addEventListener('unload', () => {
+      window.removeEventListener('scroll', scroll)
+    })
+  }
+</script>
+
+<style lang="less" scoped>
+  .active {
+    @apply text-primary;
+  }
+</style>

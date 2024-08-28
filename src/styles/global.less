@@ -1,0 +1,39 @@
+
+@import './markdown-body.less';
+
+* {
+  transition: all 0.03s linear;
+}
+
+html {
+  scroll-behavior: smooth;
+  /** 解决滚动条挤压页面的问题  */
+  scrollbar-gutter: stable;
+}
+
+body {
+  --header-height: 64px;
+  @apply bg-white dark:bg-gray-950 leading-[1.75];
+}
+
+.anchor {
+  position: relative;
+  top: -96px; // 偏移值
+  display: block;
+  height: 0;
+  overflow: hidden;
+}
+
+.DocSearch-Button {
+  height: 32px;
+  border-radius: 5px;
+  background-color: #f6f6f7;
+}
+
+.dark .DocSearch-Button {
+  background-color: #161618;
+}
+
+.iconify {
+  @apply dark:text-white;
+}

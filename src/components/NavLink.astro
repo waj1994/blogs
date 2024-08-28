@@ -1,0 +1,18 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+type Props = HTMLAttributes<'a'> & {
+  isActive: boolean
+  activeClass?: string
+}
+
+const { href, class: className, activeClass, isActive, ...props } = Astro.props
+---
+
+<a
+  href={href}
+  class:list={[className, isActive ? activeClass : null]}
+  {...props}
+>
+  <slot />
+</a>
