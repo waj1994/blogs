@@ -15,7 +15,7 @@ const links = headings.filter((heading) => heading.depth < min + 2)
 ---
 
 <ul
-  class={`pl-4 py-4 text-gray-700 dark:text-white ${links.length <= 1 ? 'hidden' : ''}`}
+  class={`pl-4 py-4 ${links.length <= 1 ? 'hidden' : ''}`}
 >
   <div class="font-semibold">页面导航</div>
   {
