@@ -212,9 +212,7 @@ const routes = [
 ]
 ```
 
-:::tip
-`beforeEnter`不会应用到重定向路由上，而是应用在目标路由上，即`home`组件上
-:::
+    `beforeEnter`不会应用到重定向路由上，而是应用在目标路由上，即`home`组件上
 
 ## 别名
 

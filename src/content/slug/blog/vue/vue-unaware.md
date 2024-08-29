@@ -44,11 +44,9 @@ const atts = {
 <a :[attributeName]="url"> ... </a>
 ```
 
-:::tip
-属性如果值是 null，会被强制移除
-
-attributeName 会被浏览器强制转换成全小写 attributename，如果变量声明是 attributeName 不会生效
-:::
+    属性如果值是 null，会被强制移除
+    
+    attributeName 会被浏览器强制转换成全小写 attributename，如果变量声明是 attributeName 不会生效
 
 ## 响应式基础
 
@@ -188,9 +186,7 @@ vue 默认采用`就地更新`的策略，即在未添加 key 的时候，数据
 
 ## 表单输入绑定
 
-:::tip
-对于需要使用 IME 的语言 (中文，日文和韩文等)，你会发现 v-model 不会在 IME 输入还在拼字阶段时触发更新。如果你的确想在拼字阶段也触发更新，请直接使用自己的 input 事件监听器和 value 绑定而不要使用 v-model。
-:::
+    对于需要使用 IME 的语言 (中文，日文和韩文等)，你会发现 v-model 不会在 IME 输入还在拼字阶段时触发更新。如果你的确想在拼字阶段也触发更新，请直接使用自己的 input 事件监听器和 value 绑定而不要使用 v-model。
 
 `true-value` 和 `false-value`是 vue 特有的属性，配合`v-model`使用，顾名思义就是值为 true 和 false 时转换成的值
 
@@ -199,9 +195,8 @@ vue 默认采用`就地更新`的策略，即在未添加 key 的时候，数据
 如果想在侦听器中访问到 vue 更新后的 dom，需要指明`flush: 'post'`属性，也可以使用别名`watchPostEffect()`
 
 同步侦听器，会在 vue 所有更新前触发，需要指明`flush: 'sync'`属性，也可以使用别名`watchSyncEffect()`
-:::tip
-同步侦听器不会批处理，即有数据更新就会触发，慎重使用
-:::
+
+    同步侦听器不会批处理，即有数据更新就会触发，慎重使用
 
 ## 模板引用
 

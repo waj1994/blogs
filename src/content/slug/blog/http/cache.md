@@ -50,9 +50,8 @@ app.use("/", (req, res) => {
 
 Expires 设置的是一个具体的时间，在该时间之前浏览器都会使用该缓存
 
-:::tip
-缺点：expires 时间依赖于客户端的时间，可能存在时间不准导致缓存过期
-:::
+    缺点：
+    - expires 时间依赖于客户端的时间，可能存在时间不准导致缓存过期
 
 #### Cache-Control
 
@@ -83,9 +82,7 @@ app.use("/", (req, res) => {
 第二次请求，取缓存的数据
 ![cache-control第二次请求](/image/http/http_cache/cache_control_2.png)
 
-:::tip
-如果同时存在 expires 和 Cache-Control，Cache-Control 优先级更高
-:::
+    如果同时存在 expires 和 Cache-Control，Cache-Control 优先级更高
 
 ### 协商缓存
 
@@ -127,12 +124,11 @@ app.use("/", (req, res) => {
 第二次请求数据，客户端在 If-Modified-Since 字段中带上上一次请求的 last-modified 的值，服务器判断两个值是否相同，如果相同，则返回 304 状态码，否则返回最新资源，状态码 200
 ![last-modified第二次请求](/image/http/http_cache/last_modified_2.png)
 
-:::tip
-缺点：
 
-- 如果资源更新，但内容并没有变化（先删除，再放进来），更新时间也会变化，造成网络资源的浪费
-- last-modified 时间只能精确到秒，如果在 1 秒内多次修改文件，客户端可能没办法获取到最新的资源
-:::
+    缺点：
+    - 如果资源更新，但内容并没有变化（先删除，再放进来），更新时间也会变化，造成网络资源的浪费
+    - last-modified 时间只能精确到秒，如果在 1 秒内多次修改文件，客户端可能没办法获取到最新的资源
+
 
 #### Etag/If-None-Match
 
