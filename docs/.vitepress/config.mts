@@ -12,6 +12,7 @@ export default defineConfig({
   rewrites: {
     "about.md": "index.md"
   },
+  cleanUrls: true,
   themeConfig: {
     logo: "/logo.svg",
     nav: [
