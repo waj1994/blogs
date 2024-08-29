@@ -14,9 +14,7 @@ const min = headings.reduce((prev, next) => {
 const links = headings.filter((heading) => heading.depth < min + 2)
 ---
 
-<ul
-  class={`pl-4 py-4 ${links.length <= 1 ? 'hidden' : ''}`}
->
+<ul class={`pl-4 py-4 ${links.length <= 1 ? 'hidden' : ''}`}>
   <div class="font-semibold">页面导航</div>
   {
     links.map((heading) => (
@@ -50,8 +48,6 @@ const links = headings.filter((heading) => heading.depth < min + 2)
   if (Array.from(toclistDom).length) {
     const targetList = []
 
-    const { scrollTop } = document.documentElement
-
     const topBtn = document.getElementById('go-to-top')
     topBtn.addEventListener('click', (e) => {
       e.preventDefault()
@@ -63,7 +59,13 @@ const links = headings.filter((heading) => heading.depth < min + 2)
 
     toclistDom.forEach((item) => {
       const link = item.querySelector('a')
-      const el = document.getElementById(link.getAttribute('href').slice(1))
+      const id = link.getAttribute('href')
+      const el = document.querySelector(id)
+      const a = document.createElement('a')
+      el.removeAttribute('id')
+      a.setAttribute('id', id.slice(1))
+      a.classList.add('anchor')
+      el.appendChild(a)
       // 点击滚动效果
       link.addEventListener('click', (e) => {
         e.preventDefault()
@@ -75,29 +77,44 @@ const links = headings.filter((heading) => heading.depth < min + 2)
       targetList.push({
         el,
         link,
-        y: el.getBoundingClientRect().y + scrollTop,
       })
     })
+    targetList.reverse()
+
+    const clearActive = () => {
+      targetList.forEach((item) =>
+        item.link.classList.remove('active')
+      )
+    }
 
     const scroll = throttle(() => {
       const { innerHeight } = window
-      const { scrollTop } = document.documentElement
-      const show = scrollTop >= innerHeight * 1.5
+      const { scrollY } = window
+      const show = scrollY >= innerHeight * 1.5
       if (show) {
         topBtn.parentNode.classList.remove('hidden')
       }
       if (!show) {
         topBtn.parentNode.classList.add('hidden')
       }
-
-      const current = targetList.find((item) => item.y >= scrollTop)
+      const current = targetList.find((item) => {
+        const { el } = item
+        return el.offsetTop - 200 <= scrollY
+      })
       if (current) {
-        targetList.forEach((item) =>
-          item.link.parentNode.classList.remove('active')
-        )
-        current.link.parentNode.classList.add('active')
+        clearActive()
+        current.link.classList.add('active')
       }
-    }, 200)
+
+      console.log(document.documentElement.scrollHeight, window.innerHeight, scrollY)
+      if (
+        document.documentElement.scrollHeight - window.innerHeight <=
+        scrollY
+      ) {
+        clearActive()
+        targetList[0].link.classList.add('active')
+      }
+    }, 300)
 
     scroll()
     window.addEventListener('scroll', scroll)
