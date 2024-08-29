@@ -14,7 +14,7 @@ const min = headings.reduce((prev, next) => {
 const links = headings.filter((heading) => heading.depth < min + 2)
 ---
 
-<ul class={`pl-4 py-4 ${links.length <= 1 ? 'hidden' : ''}`}>
+<ul class={`pl-4 py-8 ${links.length <= 1 ? 'hidden' : ''}`}>
   <div class="font-semibold">页面导航</div>
   {
     links.map((heading) => (
@@ -35,8 +35,9 @@ const links = headings.filter((heading) => heading.depth < min + 2)
     <a
       href=""
       id="go-to-top"
+      class="text-gray-400 hover:text-gray-500 text-sm"
     >
-      go to top
+      回到顶部
     </a>
   </li>
 </ul>
