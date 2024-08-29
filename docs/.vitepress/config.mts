@@ -9,11 +9,14 @@ export default defineConfig({
     "欢迎开启一段轻松愉悦的前端之旅。这里有js、vue、react、node等相关的知识点，还有常见的面识题，日常开发中遇到的问题等等；我们从基本使用，到底层原理，从方方面面带您领略前端的魅力。让我们一起加油，成为优秀的前端coder。",
   titleTemplate: ":title - Waj Blog",
   lang: "zh-CN",
+  rewrites: {
+    "about.md": "index.md"
+  },
   themeConfig: {
     logo: "/logo.svg",
     nav: [
       { text: "博客", link: "/blog/cache", activeMatch: "/blog/" },
-      { text: "关于我", link: "/about/" },
+      { text: "关于我", link: "/" },
     ],
     // ts-ignore
     sidebar: {
