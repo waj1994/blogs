@@ -13,7 +13,7 @@ html {
 
 body {
   --header-height: 64px;
-  @apply bg-white dark:bg-gray-950 leading-[1.75] text-gray-700 dark:text-gray-400;
+  @apply bg-white dark:bg-gray-950 leading-[1.75] text-gray-700 dark:text-gray-400 break-words;
 }
 
 .anchor {
@@ -36,20 +36,4 @@ body {
 
 .iconify {
   @apply dark:text-white;
-}
-
-// 滚动条宽度
-::-webkit-scrollbar {
-  @apply w-2;
-}
-// 滚动条轨道
-::-webkit-scrollbar-track {
-  @apply bg-gray-200 dark:bg-white/35 rounded-xl;
-}
-// 小滑块
-::-webkit-scrollbar-thumb {
-  @apply bg-gray-400 dark:bg-white/75 rounded-md;
-}
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-500 dark:bg-white/85;
 }
