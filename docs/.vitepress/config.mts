@@ -16,12 +16,12 @@ export default defineConfig({
   themeConfig: {
     logo: "/logo.svg",
     nav: [
-      { text: "博客", link: "/blog/cache", activeMatch: "/blog/" },
+      { text: "前端", link: "/frontend/http/cache", activeMatch: "/frontend/" },
       { text: "关于我", link: "/" },
     ],
     // ts-ignore
     sidebar: {
-      "/blog/": sidebar,
+      "/frontend/": await sidebar('../../frontend'),
     },
     search: {
       provider: "algolia",
@@ -49,9 +49,9 @@ export default defineConfig({
     },
 
     outline: {
+      level: [2, 3],
       label: "页面导航",
     },
-
     lastUpdated: {
       text: "最后更新于",
       formatOptions: {
@@ -59,7 +59,6 @@ export default defineConfig({
         timeStyle: "medium",
       },
     },
-
     returnToTopLabel: "回到顶部",
     sidebarMenuLabel: "菜单",
     darkModeSwitchLabel: "主题",

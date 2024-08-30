@@ -1,7 +1,5 @@
 ---
-groups: vue
 title: 你不知道的vue-router
-outline: [2, 3]
 ---
 
 # {{$frontmatter.title}}

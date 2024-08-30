@@ -1,7 +1,5 @@
 ---
-groups: 其他
 title: git常用命令
-outline: [2, 4]
 ---
 
 # {{$frontmatter.title}}

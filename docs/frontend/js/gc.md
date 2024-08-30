@@ -1,7 +1,5 @@
 ---
-groups: js
 title: 浏览器垃圾回收
-outline: [2, 4]
 ---
 
 # {{$frontmatter.title}}

@@ -1,7 +1,5 @@
 ---
-groups: js
 title: rollup入门
-outline: [2, 4]
 ---
 
 # {{$frontmatter.title}}

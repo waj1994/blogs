@@ -1,7 +1,5 @@
 ---
-groups: 网络
 title: http缓存
-outline: [2, 4]
 ---
 
 # {{$frontmatter.title}}

@@ -1,13 +1,12 @@
 ---
-layout: home
+title: 关于我
+aside: false
 ---
 
 <script setup>
 import dayjs from 'dayjs';
 const diff = dayjs().diff(dayjs('2019-08-01'), 'year')
 </script>
-
-<div class="about">
 
 ### 我是 Waj
 
@@ -41,12 +40,3 @@ const diff = dayjs().diff(dayjs('2019-08-01'), 'year')
 
 - [github](https://github.com/waj1994/blogs)
 - <a href="mailto:wjie2021@163.com">email</a>
-
-</div>
-
-<style>
-.about {
-  max-width: 688px;
-  margin: 100px auto;
-}
-</style>

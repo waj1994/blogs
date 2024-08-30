@@ -1,7 +1,5 @@
 ---
-groups: js
 title: 面试常见手写题
-outline: [2, 4]
 ---
 
 # {{$frontmatter.title}}

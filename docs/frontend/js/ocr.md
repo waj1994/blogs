@@ -1,7 +1,5 @@
 ---
-groups: js
 title: 前端ocr识别
-outline: [2, 4]
 ---
 
 # {{$frontmatter.title}}

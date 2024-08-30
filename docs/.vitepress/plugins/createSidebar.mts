@@ -25,21 +25,25 @@ function analysis(str: string) {
   }
 }
 
-async function deepResolve(url: string) {
+async function deepResolve(url: string, groups?: string) {
   const dirs = await fs.readdir(resolve(url));
-  const excludeDir = [".vitepress", "public"];
-  const result: (DefaultTheme.SidebarItem & { groups: string })[] = [];
-
+  const result: (DefaultTheme.SidebarItem & { groups?: string })[] = [];
   for (let index = 0; index < dirs.length; index++) {
     const item = dirs[index];
-    if (excludeDir.includes(item)) {
+    if (item === '__dir.json') {
       continue;
     }
-    const uri = `${url}${item}`;
+    const uri = `${url}/${item}`;
     const stat = await fs.stat(resolve(uri));
     // 文件夹
     if (stat.isDirectory()) {
-      result.push(...(await deepResolve(uri)));
+      let parent
+      try {
+        parent = JSON.parse(await fs.readFile(resolve(uri, "__dir.json"), "utf-8")).title
+      } catch (error) {
+        parent = item
+      }
+      result.push(...(await deepResolve(uri, parent)));
       continue;
     }
     const text = await fs.readFile(resolve(uri), "utf-8");
@@ -47,14 +51,14 @@ async function deepResolve(url: string) {
     result.push({
       text: obj.data.title,
       link: '/' + uri.replace(/\.\.\/\.\.\//g, "").split(".md")[0],
-      groups: obj.data.groups,
+      groups,
     });
   }
   return result;
 }
 
-const createSidebar = async (): Promise<DefaultTheme.SidebarItem[]> => {
-  const flatArr = await deepResolve("../../blog/");
+const createSidebar = async (url): Promise<DefaultTheme.SidebarItem[]> => {
+  const flatArr = await deepResolve(url);
   const result: DefaultTheme.Sidebar = [];
   flatArr.forEach((item) => {
     const { text, link, groups } = item;
@@ -76,4 +80,4 @@ const createSidebar = async (): Promise<DefaultTheme.SidebarItem[]> => {
   return result;
 };
 
-export default await createSidebar()
+export default createSidebar

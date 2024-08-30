@@ -1,5 +1,4 @@
 ---
-groups: js
 title: nuxtjs3安装失败解决方案
 ---
 
