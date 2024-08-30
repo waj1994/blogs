@@ -15,6 +15,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 const { title, description } = Astro.props
 ---
 
+<!-- Algolia DocSearch -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@docsearch/css@3"
+/>
+<script
+  type="module"
+  src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"
+></script>
+
 <meta
   name="msvalidate.01"
   content="9D41D43776743EEA9312CE08774752B8"
@@ -114,5 +124,17 @@ const { title, description } = Astro.props
       ;(window.siq = window.siq || []).push(arguments)
     }
 </script>
+
+
+<script type="module">
+  docsearch({
+    appId: 'EAFR0MP54B',
+    apiKey: '46f0d6a17f8bd194814f4bb556b324a4',
+    indexName: 'waj9',
+    container: '#search-container',
+    debug: false,
+  })
+</script>
+
 
 <SpeedInsights />
