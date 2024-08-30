@@ -39,4 +39,4 @@ const diff = dayjs().diff(dayjs('2019-08-01'), 'year')
 有任何商务合作（狗头）请联系我：
 
 - [github](https://github.com/waj1994/blogs)
-- <a href="mailto:wjie2021@163.com">email</a>
+- <a href="mailto:waj2024@126.com">email</a>
