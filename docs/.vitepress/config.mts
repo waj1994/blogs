@@ -92,7 +92,9 @@ export default defineConfig({
     ["meta", { name: "og:image", content: "/image/js.jpg" }],
     [
       "script",
-      {},
+      {
+        type: 'module'
+      },
       `
         var _hmt = _hmt || [];
         (function() {
@@ -105,13 +107,15 @@ export default defineConfig({
     ],
     [
       "script",
-      {},
+      {
+        type: 'module'
+      },
       `window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };`,
     ],
     [
       "script",
       {
-        defer: "defer",
+        type: 'module',
         src: "/_vercel/speed-insights/script.js",
       },
     ],
