@@ -17,7 +17,7 @@ const diff = dayjs().diff(dayjs('2019-08-01'), 'year')
 ### 我的技术栈
 
 - 语言： html、css、js、ts、nodejs、微信小程序
-- 前端框架：react、vue、nextjs、astro
+- 前端框架：react、vue、nuxtjs、astro
 - 后端框架：express、koa
 - 跨平台：electron、uni-app
 
