@@ -77,18 +77,6 @@ export default defineConfig({
         content: "Qp6MuYYJvqPH7bFrnlQOiITOwD80iZ0x0BoYBehEUaQ",
       },
     ],
-    ["meta", { name: "og:title", content: "Waj Blog" }],
-    ["meta", { name: "og:type", content: "website" }],
-    ["meta", { name: "og:url", content: "https://waj9.cn" }],
-    [
-      "meta",
-      {
-        name: "og:description",
-        content:
-          "欢迎开启一段轻松愉悦的前端之旅。这里有js、vue、react、node等相关的知识点，还有常见的面识题，日常开发中遇到的问题等等；我们从基本使用，到底层原理，从方方面面带您领略前端的魅力。让我们一起加油，成为优秀的前端coder。",
-      },
-    ],
-    ["meta", { name: "og:image", content: "https://waj9.cn/image.jpg" }],
     [
       "script",
       {
