@@ -116,3 +116,48 @@ what？
 ![输出结果](/image/js/js-unaware/result.png)
 
 可以看到，`querySelectorAll`获取的值在新增`li`之后是没有变化的，而`getElementsByTagName`的结果会随着新增`li`而变化
+
+## 桌面通知
+
+桌面通知使用[`Notification`](https://developer.mozilla.org/zh-CN/docs/Web/API/Notification) API 实现
+
+移动端就别用了，兼容性感人
+
+基本语法：
+
+```js
+const note = new Notification("标题");
+// or
+const note = new Notification("标题", {
+  body: "内容",
+  // ...
+});
+```
+
+使用该语法需要用户授权浏览器通知权限，可以使用`Notification.permission()`判断权限，如果权限是拒绝可使用`Notification.requestPermission()`再次询问用户
+
+```js
+/**
+ * 检查是否已授予通知权限；如果是的话，创建一个通知
+ * granted：允许通知
+ * denie：拒绝通知
+ * default：询问，浏览器弹窗询问用户
+ */
+if (Notification.permission === "granted") {
+  const notification = new Notification("你好！", {
+    body: "这是一条测试信息",
+  });
+} else if (Notification.permission !== "denied") {
+  // 我们需要征求用户的许可
+  Notification.requestPermission().then((permission) => {
+    // 如果用户接受，我们就创建一个通知
+    if (permission === "granted") {
+      const notification = new Notification("你好！", {
+        body: "这是一条测试信息",
+      });
+    }
+  });
+}
+```
+
+该 api 需要授权浏览器通知权限并且`pc系统需要打开通知`，否则无效
