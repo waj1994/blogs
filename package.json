@@ -12,6 +12,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
+    "@shikijs/vitepress-twoslash": "^1.17.7",
     "@types/node": "^20.12.10",
     "axios": "^1.7.2",
     "gray-matter": "^4.0.3",

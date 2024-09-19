@@ -68,13 +68,14 @@ rollup -c config/rollup.config.js
 
 js 高阶语法转换成浏览器识别的低阶语法。
 
-    npm i -D rollup-plugin-babel @babel/core @babel/preset-env
+```shell
+npm i -D @rollup/plugin-babel @babel/core @babel/preset-env
+```
 
-改造`rollup.config.js`:
+:::code-group
 
-```javascript
-// /config/rollup.config.js
-import babel from "rollup-plugin-babel";
+```javascript [rollup.config.js]
+import babel from "@rollup/plugin-babel";
 
 export default {
   // ...
@@ -86,9 +87,7 @@ export default {
 };
 ```
 
-项目根目录创建`.babelrc`
-
-```json
+```json [.babelrc]
 {
   "presets": [
     [
@@ -101,6 +100,8 @@ export default {
   "plugins": []
 }
 ```
+
+:::
 
 `"modules": false`，不然 Babel 会在 Rollup 处理之前将模块转成 CommonJS，导致 Rollup 处理失败。
 
@@ -168,8 +169,9 @@ npm i -D rollup-merge-config
 
 在 config 目录新建`rollup.config.dev.js`和`rollup.config.prod.js`，改变 package.json 文件 scripts 角本指向的配置文件。
 
-```javascript
-// /config/rollup.config.dev.js   rollup.config.prod.js类似
+:::code-group
+
+```javascript [rollup.config.dev.js]
 import merge from "rollup-merge-config";
 import baseConfig from "./rollup.config.js";
 
@@ -178,8 +180,7 @@ export default merge(baseConfig, {
 });
 ```
 
-```json5
-// package.json
+```json5 [package.json]
 {
   scripts: {
     dev: "rollup -w -c config/rollup.config.dev.js",
@@ -188,18 +189,20 @@ export default merge(baseConfig, {
 }
 ```
 
+:::
+
 ## 压缩代码
 
-推荐使用`rollup-plugin-terser`插件。
+推荐使用`@rollup/plugin-terser`插件。
 
 ```shell
-npm i -D rollup-plugin-terser
+npm i -D @rollup/plugin-terser
 ```
 
 修改配置文件，开发环境不用压缩代码，我们修改`rollup.config.prod.js`就好。
 
 ```javascript
-import { terser } from "rollup-plugin-terser";
+import { terser } from "@rollup/plugin-terser";
 
 export default merge(baseConfig, {
   plugins: [terser()],
@@ -214,7 +217,9 @@ npm i -D rollup-plugin-serve rollup-plugin-livereload
 
 启动本地服务只是开发时需要，使用我们只需要修改开发环境配置文件。
 
-```javascript
+:::code-group
+
+```javascript [rollup.config.dev.js]
 import serve from "rollup-plugin-serve";
 import livereload from "rollup-plugin-livereload";
 
@@ -229,9 +234,7 @@ export default merge(baseConfig, {
 });
 ```
 
-在项目根目录新建 index.html 同时引入输入的 js 文件
-
-```html
+```html [index.html]
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -243,6 +246,8 @@ export default merge(baseConfig, {
   </body>
 </html>
 ```
+
+:::
 
 ## 结束
 

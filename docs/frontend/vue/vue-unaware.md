@@ -8,7 +8,7 @@ title: 你不知道的vue
 
 同名属性绑定：
 
-```vue
+```vue twoslash [app.vue]
 <script setup lang="ts">
 const id = "123";
 </script>
@@ -22,13 +22,13 @@ const id = "123";
 
 多个属性绑定：
 
-```vue
+```vue twoslash
 <script setup lang="ts">
 const atts = {
-  class: 'active',
-  style: { color: 'red' }
-  id: 'id'
-}
+  class: "active",
+  style: { color: "red" },
+  id: "id",
+};
 </script>
 
 <template>
@@ -73,6 +73,8 @@ reactive 是通过`Proxy`来代理对象的
 
 ```vue
 <script setup lang="ts">
+import { reactive } from "vue";
+
 const row = reactive({
   name: "waj",
   age: 18,
@@ -100,7 +102,9 @@ console.log(proxy === proxy2); // true
 
 - 在`reactive()深层响应式对象`内会解包，浅层响应式对象内不会解包
 
-```js
+```vue
+<script setup>
+import { ref, reactive, shallowReactive } from "vue";
 const count = ref(0);
 const count1 = ref(0);
 const state = reactive({
@@ -121,6 +125,7 @@ const state1 = shallowReactive({
 // 浅层响应式对象  不会被解包  但是顶层会被解包
 state1.data.count.value++;
 console.log(state1.data.count.value);
+</script>
 ```
 
 - 在`reactive()`数组或原生集合内不会解包
@@ -147,6 +152,8 @@ console.log(data[0].value);
 </template>
 
 <script setup>
+import { ref, reactive } from "vue";
+
 // count state是顶层   state.id不是
 const count = ref(0);
 const state = reactive({ id: 1 });
@@ -229,12 +236,14 @@ vue 默认采用`就地更新`的策略，即在未添加 key 的时候，数据
 
 ### 自定义 v-model 修饰符
 
-```html
+:::code-group
+
+```vue [Parent.vue]
 <!-- 父组件 -->
 <Child v-model.custom="value" />
 ```
 
-```vue
+```vue [Child.vue]
 <!-- 子组件 -->
 <script>
 // 解构可以拿到修饰符
@@ -254,6 +263,8 @@ const [model, modifiers] = defineModel({
   </input v-model="model" />
 </template>
 ```
+
+:::
 
 ## 属性透传
 
@@ -284,8 +295,17 @@ const [model, modifiers] = defineModel({
 
 顾名思义就是插槽有自己的名字，传递的内容对应名字渲染
 
-```html
-<!-- 子组件 -->
+:::code-group
+
+```html [Parent.vue]
+<Child>
+  <header v-slot:header>header</header>
+  <main>这是默认的</main>
+  <footer v-slot:footer>footer</footer>
+</Child>
+```
+
+```html [Child.vue]
 <div>
   <slot name="header"></slot>
   <slot></slot>
@@ -293,14 +313,7 @@ const [model, modifiers] = defineModel({
 </div>
 ```
 
-```html
-<!-- 父组件 -->
-<Child>
-  <header v-slot:header>header</header>
-  <main>这是默认的</main>
-  <footer v-slot:footer>footer</footer>
-</Child>
-```
+:::
 
 `v-slot`简写`#`，`<header v-slot:header>header</header>`可以简写成`<header #:header>header</header>`
 
@@ -314,8 +327,9 @@ const [model, modifiers] = defineModel({
 
 即子组件传递参数给`<slot>`，父组件可接收参数
 
-```html
-<!-- 父组件 -->
+:::code-group
+
+```html [Parent.vue]
 <Child>
   <template #header="{ age }">
     具名插槽--子组件传递过来的参数：{{ age }}
@@ -326,13 +340,14 @@ const [model, modifiers] = defineModel({
 </Child>
 ```
 
-```html
-<!-- 子组件 -->
+```html [Child.vue]
 <div>
   <slot name="header" :age="18"></slot>
   <slot fullName="waj"></slot>
 </div>
 ```
+
+:::
 
 ### 无渲染组件
 
@@ -342,9 +357,10 @@ const [model, modifiers] = defineModel({
 
 ### provide
 
-```js
+```vue
+<script setup lang="ts">
 // vue组件内提供
-import { provide, ref } from "vue";
+import { ref } from "vue";
 
 const count = ref(0);
 
@@ -354,28 +370,37 @@ provide("key", count);
 // 如果想要提供修改方式
 provide("count", {
   count,
-  updateCount(value) {
+  (value) => {
     count.value = value;
   },
 });
+<script>
 ```
 
 除了可以在 vue 组件内提供还可以在应用层面提供
 
-```js
-// main.js
+```vue [main.js]
+<script setup lang="ts">
 import { createApp } from "vue";
 
-const app = createApp({});
+const app = createApp({
+  /* 根组件选项 */
+});
 
-app.provide(/* 注入名 */ "message", /* 值 */ "hello!");
+/**
+ * message 注入名称
+ * hello 值
+ */
+app.provide("message", "hello!");
+<script>
 ```
 
 ### inject
 
 提供的值是 ref 时，注入不会解包
 
-```js
+```vue
+<script setup lang="ts">
 import { inject } from "vue";
 const key = inject("count");
 console.log(key.value);
@@ -384,6 +409,7 @@ console.log(key.value);
 const { count, updateCount } = inject("count");
 updateCount(count.value + 1);
 console.log(count.value);
+</script>
 ```
 
 ### inject 默认值
@@ -575,7 +601,7 @@ export default {
 
 js 钩子函数：
 
-```vue
+```vue twoslash
 <template>
   <Transition
     @before-enter="onBeforeEnter"
@@ -591,7 +617,7 @@ js 钩子函数：
   </Transition>
 </template>
 
-<script setup>
+<script setup lang="ts">
 // 在元素被插入到 DOM 之前被调用
 // 用这个来设置元素的 "enter-from" 状态
 function onBeforeEnter(el) {}
@@ -687,20 +713,23 @@ function onLeaveCancelled(el) {}
 - `resolve`：在`默认插槽`组件加载完成触发
 - `fallback`：`fallback` 插槽的内容显示时触发
 
-```html
-<RouterView v-slot="{ Component }">
-  <template v-if="Component">
-    <Transition mode="out-in">
-      <KeepAlive>
-        <Suspense @pending="" @resolve="" @fallback="">
-          <!-- 主要内容 -->
-          <component :is="Component"></component>
+```vue
+<template>
+  <RouterView v-slot="{ Component }">
+    <template v-if="Component">
+      <Transition mode="out-in">
+        <KeepAlive>
+          <Suspense @pending="" @resolve="" @fallback="">
+            <!-- 主要内容 -->
+            <component :is="Component"></component>
 
-          <!-- 加载中状态 -->
-          <template #fallback> 正在加载... </template>
-        </Suspense>
-      </KeepAlive>
-    </Transition>
-  </template>
-</RouterView>
+            <!-- 加载中状态 -->
+            <template #fallback> 正在加载... </template>
+          </Suspense>
+        </KeepAlive>
+      </Transition>
+    </template>
+  </RouterView>
+  <template></template>
+</template>
 ```

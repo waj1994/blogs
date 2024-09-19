@@ -1,16 +1,17 @@
 import { defineConfig } from "vitepress";
+import { transformerTwoslash } from '@shikijs/vitepress-twoslash'
 
 import sidebar from "./plugins/createSidebar.mts";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "Waj Blog",
-  description:  
+  description:
     "欢迎开启一段轻松愉悦的前端之旅。这里有js、vue、react、node等相关的知识点，还有常见的面识题，日常开发中遇到的问题等等；我们从基本使用，到底层原理，从方方面面带您领略前端的魅力。让我们一起加油，成为优秀的前端coder。",
   titleTemplate: ":title - Waj Blog",
   lang: "zh-CN",
   rewrites: {
-    "about.md": "index.md"
+    "about.md": "index.md",
   },
   cleanUrls: true,
   themeConfig: {
@@ -20,7 +21,7 @@ export default defineConfig({
       { text: "关于我", link: "/" },
     ],
     sidebar: {
-      "/frontend/": await sidebar('../../frontend'),
+      "/frontend/": await sidebar("../../frontend"),
     },
     search: {
       provider: "algolia",
@@ -80,7 +81,7 @@ export default defineConfig({
     [
       "script",
       {
-        type: 'module'
+        type: "module",
       },
       `
         var _hmt = _hmt || [];
@@ -95,14 +96,14 @@ export default defineConfig({
     [
       "script",
       {
-        type: 'module'
+        type: "module",
       },
       `window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };`,
     ],
     [
       "script",
       {
-        type: 'module',
+        type: "module",
         src: "/_vercel/speed-insights/script.js",
       },
     ],
@@ -113,8 +114,8 @@ export default defineConfig({
         html {
           scrollbar-gutter: stable;
         }
-      `
-    ]
+      `,
+    ],
   ],
   sitemap: {
     hostname: "https://waj9.cn",
@@ -125,5 +126,7 @@ export default defineConfig({
       // 默认禁用图片懒加载
       lazyLoading: true,
     },
+    // @ts-ignore
+    codeTransformers: [transformerTwoslash()],
   },
 });
