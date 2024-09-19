@@ -601,7 +601,7 @@ export default {
 
 js 钩子函数：
 
-```vue twoslash
+```vue
 <template>
   <Transition
     @before-enter="onBeforeEnter"
@@ -721,8 +721,7 @@ function onLeaveCancelled(el) {}
         <KeepAlive>
           <Suspense @pending="" @resolve="" @fallback="">
             <!-- 主要内容 -->
-            <component :is="Component"></component>
-
+            <component :is="Component" />
             <!-- 加载中状态 -->
             <template #fallback> 正在加载... </template>
           </Suspense>
@@ -730,6 +729,5 @@ function onLeaveCancelled(el) {}
       </Transition>
     </template>
   </RouterView>
-  <template></template>
 </template>
 ```
