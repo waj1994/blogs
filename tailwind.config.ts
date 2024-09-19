@@ -1,11 +1,13 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from "tailwindcss";
+import typography from "@tailwindcss/typography";
 
 export default <Partial<Config>>{
-  darkMode: 'class',
+  darkMode: "class",
+  plugins: [typography()],
   theme: {
     extend: {
       colors: {
-        primary: '#00C16A',
+        primary: "#00C16A",
       },
       fontFamily: {
         sans: [
@@ -14,4 +16,4 @@ export default <Partial<Config>>{
       },
     },
   },
-}
+};

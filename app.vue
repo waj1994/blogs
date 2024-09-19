@@ -82,8 +82,6 @@ onMounted(() => {
 </template>
 
 <style lang="less">
-@import '~/assets/styles/markdown-body.less';
-
 * {
   transition: all 0.01s linear;
 }
